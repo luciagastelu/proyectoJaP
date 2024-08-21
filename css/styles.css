@@ -189,6 +189,51 @@ a.custom-card:hover {
   color: orange;
 }
 
-.contenedor{
-  text-align: center
+/* Pantalla Login */
+
+.recuadro { /* Recuadro del div que contiene elementos del login */
+  border: 1px solid #5e5e5e; /* Borde */
+  padding: 20px; /* Espacio interno entre el borde y el contenido */
+  margin-left: 480px;  /* Espacio externo izquierdo alrededor del recuadro */
+  margin-right: 480px;  /* Espacio externo derecho alrededor del recuadro */
+  text-align: center; /* Centrar elementos dentro del recuadro */
+}
+
+.titulologin { /* Titulo Bienvenido */
+  font-size: 48px; /* Tamaño de la fuente */
+  font-family: Tahoma, sans-serif /* Fuente de la letra */
+}
+
+.campo_texto::placeholder { /* Campos que se vacían cuando los voy a completar */
+  color: #666666; /* Color del texto del placeholder */
+  opacity: 0.7; /* Transparencia del texto del placeholder */
+  font-size: 15px; /* Tamaño de la fuente */
+  padding: 10px; /* Espacio interno */
+  
+}
+
+.campo_texto { /* Recuadro para ingresar texto usuario y contraseña */
+  background-color: #dcdcdc;
+  border-radius: 8px;/* Redondear bordes */
+  height: 40px; /* Altura bordes */
+  border: 1px solid #6d6d6d; /* Color y grosor de bordes */
+  box-shadow: 0 4px 1px rgba(0, 0, 0, 0.1); 
+}
+
+.botoningresar { /* Boton ingresar */
+  background-color: #dcdcdc; /* Color de fondo */
+  padding: 2px 25px; /* Espacio interno */
+  border: 1px solid #6d6d6d;
+  border-radius: 10px; /* Redondear bordes */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  font-size: 15px; /* Tamaño de la fuente */
+}
+
+.olvido { /* Texto final de olvido de contraseña y registro */
+  margin-bottom:2px; /* Espacio entre el texto de los diferentes renglones */
+  font-size: 10px; /* Tamaño de la fuente */
+}
+
+a {
+  color:#6d6d6d; /* Color de los hipervinculos */
 }

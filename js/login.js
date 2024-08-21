@@ -8,7 +8,9 @@ function validarForm(){
     if (username === "" || password === "") {
         //Mostrar el error
         showAlertError();
-    } else {
+    } else { 
+        //Guardar la sesión
+        localStorage.setItem('user', JSON.stringify({username: username }));
         // No se si index es la portada
         showAlertSuccess();
         setTimeout(() => {
@@ -25,3 +27,6 @@ function showAlertError(){
 function showAlertSuccess(){
     alert("¡Inicio de sesión exitoso!");
 }
+
+//Event listener al botón de ingresar
+document.getElementById('regBtn').addEventListener('click', validarForm);

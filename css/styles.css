@@ -188,3 +188,16 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+table {
+  table-layout: fixed;
+  width: 75%;
+  height: 150px;
+  border-collapse: collapse;
+  border: black 1px solid;
+  background: white;
+  text-align: center;
+}
+td, th {
+  border: black 1px solid;
+}

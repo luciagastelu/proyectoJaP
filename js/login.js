@@ -18,3 +18,10 @@ function validarForm(){
         // Lo de windows location etc en lugar de href lo obtuve del punto 4 de la entrega
     }
 }
+function showAlertError(){
+    alert("Por favor, completa todos los campos antes de enviar el formulario.");
+}
+
+function showAlertSuccess(){
+    alert("¡Inicio de sesión exitoso!");
+}

@@ -1,5 +1,13 @@
+function showAlertError(){
+    alert("Por favor, completa todos los campos antes de enviar el formulario.");
+}
 
-// POR FAVOR poner las alertas de success y de error; mi parte depende de las alertas tambien 
+function showAlertSuccess(){
+    alert("¡Inicio de sesión exitoso!");
+}
+
+//Event listener al botón de ingresar
+document.getElementById('regBtn').addEventListener('click', validarForm);
 
 function validarForm(){
     const username = document.getElementById("usuario").value;
@@ -9,12 +17,10 @@ function validarForm(){
         //Mostrar el error
         showAlertError();
     } else {
-        // No se si index es la portada
         showAlertSuccess();
         setTimeout(() => {
             window.location.href = "index.html";
         }, 10000); 
         //10000 hace que espere 10 segundos así ve el alertsuccess sino lo saco 
-        // Lo de windows location etc en lugar de href lo obtuve del punto 4 de la entrega
     }
 }

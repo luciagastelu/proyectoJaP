@@ -1,0 +1,17 @@
+[
+    {
+      "id": 1,
+      "name": "Electrónica",
+      "description": "Encuentra todo tipo de dispositivos electrónicos.",
+      "productCount": 150,
+      "imgSrc": "img/electronics.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Ropa",
+      "description": "Ropa de todo tipo para todas las estaciones.",
+      "productCount": 200,
+      "imgSrc": "img/clothes.jpg"
+    }
+  ]
+  

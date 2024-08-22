@@ -189,6 +189,22 @@ a.custom-card:hover {
   color: orange;
 }
 
+table {
+  table-layout: fixed;
+  width: 75%;
+  height: 150px;
+  border-collapse: collapse;
+  border: black 1px solid;
+  text-align: center;
+}
+
+body {
+  
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
 /* Pantalla Login */
 
 .recuadro { /* Recuadro del div que contiene elementos del login */
@@ -254,5 +270,3 @@ a {
   color:#fcce6c; /* Color de los hipervinculos */
   font-weight: bold; /* Ponerle negrita al texto */
 }
-
-

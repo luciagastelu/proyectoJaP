@@ -9,7 +9,7 @@ function validarForm(){
         //Mostrar el error
         showAlertError();
     } else { 
-        //Guardar la sesión
+        //Guardar la sesión.
         localStorage.setItem('user', JSON.stringify({username: username }));
         // No se si index es la portada
         showAlertSuccess();

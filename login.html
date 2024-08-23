@@ -8,6 +8,7 @@
   
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <script src="js/login.js"></script>
   <style>
     body {
       background-image: url('img/login_fondo.jpg');
@@ -47,19 +48,19 @@
     <div class="container">
 
 <body>
-  <form>
+  <form id="login_form">
   <div class="recuadro">
   <!--Titulo login-->
   <h1 class="titulologin">Bienvenido</h1>
   
      <!--Campo usuario-->
-     <input type="text" placeholder="Ingrese su usuario" class="campo_texto">
+     <input type="text" id="usuario" placeholder="Ingrese su usuario" class="campo_texto" required>
     
      <!--Campo contraseña-->
-     <input type="password" placeholder="Ingrese su contraseña" class="campo_texto">
+     <input type="password" id="contraseña" placeholder="Ingrese su contraseña" class="campo_texto" required>
      
     <!--Boton ingresar-->
-    <button class="botoningresar" type="button" id="regBtn">Ingresar</button>
+    <button class="botoningresar" type="submit" id="boton_ingresar">Ingresar</button>
     
     <!--Texo olvido de contraseña y falta usuario-->
     

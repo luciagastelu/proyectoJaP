@@ -7,20 +7,24 @@ function showAlertSuccess(){
 }
 
 //Event listener al botón de ingresar
-document.getElementById('regBtn').addEventListener('click', validarForm);
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('boton_ingresar').addEventListener('click', validarForm);
+});
 
-function validarForm(){
+function validarForm(event){
+    // Prevenir el comportamiento por defecto del formulario
+    event.preventDefault();
+    
     const username = document.getElementById("usuario").value;
     const password = document.getElementById("contraseña").value;
+
     // Revisa que los campos no estan vacios
     if (username === "" || password === "") {
         //Mostrar el error
         showAlertError();
     } else {
         showAlertSuccess();
-        setTimeout(() => {
-            window.location.href = "index.html";
-        }, 10000); 
-        //10000 hace que espere 10 segundos así ve el alertsuccess sino lo saco 
+        
+            window.location.href = 'index.html';
+        }  
     }
-}

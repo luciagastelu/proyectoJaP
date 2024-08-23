@@ -20,11 +20,22 @@ function validarForm(event){
 
     // Revisa que los campos no estan vacios
     if (username === "" || password === "") {
-        //Mostrar el error
-        showAlertError();
-    } else {
-        showAlertSuccess();
-        
-            window.location.href = 'index.html';
-        }  
-    }
+    //Mostrar el error
+         showAlertError();
+     } else {
+         showAlertSuccess(); 
+         
+     window.location.href = 'index.html';
+    } 
+} 
+
+
+
+
+   
+
+
+
+
+
+   

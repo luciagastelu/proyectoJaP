@@ -4,33 +4,69 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>eMercado - Todo lo que busques está aquí</title>
+  <title>eMercado - Login</title>
   
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <script src="js/login.js"></script>
   <style>
     body {
-      background-color: rgb(248, 249, 250);
+      background-image: url('img/login_fondo.jpg');
+      background-size: cover fixed;
     }
   </style>
 </head>
 
 <body>
-  <div class="contenedor">
-  <h1 class="titulologin">Bienvenido</h1>
-    
-     <label for="nombre" class="form-label">Usuario</label>
-     <input type="text" class="form-control" id="usuario">
-    
-    <label for="email" class="form-label">Contraseña</label>
-    <input type="email" class="form-control" id="contraseña">
-  
-    <button class="botoningresar" type="button" id="regBtn">Ingresar</button>
-   
-    <p class="olvidocontra"><a href="" target="_blank">¿Olvidó su contraseña?</a></p>
-    <p class="notengousu">¿No tienes usuario?<a href="" target="_blank">Regístrate.</a></p>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="login.html">Iniciar Sesión</a>
+          </li>
+          <li class="nav-item">
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main class="pb-5 container">
+    <div class="container">
 
+<body>
+  <form id="login_form">
+  <div class="recuadro">
+  <!--Titulo login-->
+  <h1 class="titulologin">Bienvenido</h1>
+  
+     <!--Campo usuario-->
+     <input type="text" id="usuario" placeholder="Ingrese su usuario" class="campo_texto" required>
+    
+     <!--Campo contraseña-->
+     <input type="password" id="contraseña" placeholder="Ingrese su contraseña" class="campo_texto" required>
+     
+    <!--Boton ingresar-->
+    <button class="botoningresar" type="submit" id="boton_ingresar">Ingresar</button>
+    
+    <!--Texo olvido de contraseña y falta usuario-->
+    
+    <p class="olvido"><a href="" target="_blank">¿Olvidó su contraseña?</a></p>
+    <p class="registro">¿No tienes usuario? <a href="" target="_blank">Regístrate.</a></p>
+  </form>
   </div>
 </body>
 

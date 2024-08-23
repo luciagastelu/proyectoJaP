@@ -15,7 +15,7 @@ function validarForm(){
         showAlertSuccess();
         setTimeout(() => {
             window.location.href = "index.html";
-        }, 10000); 
+        }, 5000); 
         //10000 hace que espere 10 segundos así ve el alertsuccess sino lo saco 
         // Lo de windows location etc en lugar de href lo obtuve del punto 4 de la entrega
     }

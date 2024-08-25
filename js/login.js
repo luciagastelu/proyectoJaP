@@ -21,24 +21,14 @@ function validarForm(event){
 
     // Revisa que los campos no estan vacios
     if (username === "" || password === "") {
-
-      function validarForm() {
-    const username = document.getElementById("usuario").value;
-    const password = document.getElementById("contraseña").value;
-    
-    // Revisa que los campos no están vacíos
-    if (username === "" || password === "") {
         // Mostrar el error
         showAlertError();
     } else { 
-        // Guardar la sesión
-        localStorage.setItem('user', JSON.stringify({username: username }));
         // Mostrar alerta de éxito
         showAlertSuccess();
-        
-        // Redirigir después de 2 segundos
-        setTimeout(() => {
-            window.location.href = "index.html";
-        }, 2000); 
-  }
+        // Redirige al inicio
+        window.location.href = "index.html";
+         // Guardar la sesión        
+        localStorage.setItem('user', JSON.stringify({username: username }));
+}
 }

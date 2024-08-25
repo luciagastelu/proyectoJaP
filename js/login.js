@@ -21,6 +21,6 @@ function validarForm(){
         setTimeout(() => {
             window.location.href = "index.html";
         }, 10000); 
-        //10000 hace que espere 10 segundos así ve el alertsuccess sino lo saco 
+        //10000 hace que espere 10 segundos así ve el alertsuccess, sino lo saco 
     }
 }

@@ -210,14 +210,13 @@ body {
 .recuadro { /* Recuadro del div que contiene elementos del login */
   border: 1px solid #5e5e5e; /* Borde */
   padding: 2vw 3vw; /* Espacio interno entre el borde y el contenido, primero arriba y abajo y luego derecha e izquierda */
-  margin-left: 29vw;  /* Espacio externo izquierdo alrededor del recuadro */
-  margin-right: 29vw;  /* Espacio externo derecho alrededor del recuadro */
-  margin-top: 8.1vw; /* Espacio externo superior alrededor del recuadro */
+  margin: auto; /*Espacio externo a izquierda y derecha del recuadro*/
+  margin-top: 15%; /* Espacio externo superior del recuadro */
   text-align: center; /* Centrar elementos dentro del recuadro */
   background-color: rgba(0, 0, 0, 0.1); /* Fondo semitransparente para el div */
   border-radius: 0.5vw; /* Redondear borde */
-  height: 30vw; /* Altura div */
-  width: 32vw; /* Ancho div */
+  height: 30%; /* Altura div */
+  width: 50%; /* Ancho div */
 }
 
 .titulologin { /* Titulo Bienvenido */

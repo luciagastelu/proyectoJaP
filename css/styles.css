@@ -210,8 +210,8 @@ body {
 .recuadro { /* Recuadro del div que contiene elementos del login */
   border: 1px solid #5e5e5e; /* Borde */
   padding: 2vw 3vw; /* Espacio interno entre el borde y el contenido, primero arriba y abajo y luego derecha e izquierda */
-  margin-left: 34vw;  /* Espacio externo izquierdo alrededor del recuadro */
-  margin-right: 34vw;  /* Espacio externo derecho alrededor del recuadro */
+  margin-left: 29vw;  /* Espacio externo izquierdo alrededor del recuadro */
+  margin-right: 29vw;  /* Espacio externo derecho alrededor del recuadro */
   margin-top: 8.1vw; /* Espacio externo superior alrededor del recuadro */
   text-align: center; /* Centrar elementos dentro del recuadro */
   background-color: rgba(0, 0, 0, 0.1); /* Fondo semitransparente para el div */
@@ -241,7 +241,7 @@ body {
   width: 20vw; /* Ancho recuadro */
   border: 1px solid #6d6d6d; /* Color y grosor de bordes */
   box-shadow: 0 4px 1px rgba(0, 0, 0, 0.1); /* Sombra a los campos */
-  margin-top:1.5vw; /* Espacio superior entre el elemento y el elemento anterior */
+  margin-top:0.8vw; /* Espacio superior entre el elemento y el elemento anterior */
 }
 
 .botoningresar { /* Boton ingresar */
@@ -251,19 +251,19 @@ body {
   border-radius: 1.5vw;; /* Redondear bordes */
   cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
   font-size: 1.5vw; /* Tamaño de la fuente */
-  margin-top:2vw; /* Espacio superior entre el elemento y el elemento anterior */
+  margin-top:0.8vw; /* Espacio superior entre el elemento y el elemento anterior */
 }
 
 .olvido { /* Texto final de olvido de contraseña*/
   margin-bottom:0.02vw; /* Espacio entre el texto de los diferentes renglones */
   font-size: 1vw; /* Tamaño de la fuente */
-  margin-top:1.5vw; /* Espacio superior entre el elemento y el elemento anterior */
+  margin-top: 1.8vw; /* Espacio superior entre el elemento y el elemento anterior */
 }
 
 .registro { /* Texto final de registro */
   margin-bottom:0.02vw; /* Espacio entre el texto de los diferentes renglones */
   font-size: 1vw; /* Tamaño de la fuente */
-  margin-top:0.1vw; /* Espacio superior entre el elemento y el elemento anterior */
+  margin-top: 0.5vw; /* Espacio superior entre el elemento y el elemento anterior */
 }
 
 a {

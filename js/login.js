@@ -52,4 +52,4 @@ function showAlertSuccess() {
 }
 
 // Event listener al botón de ingresar
-document.getElementById('regBtn').addEventListener('click', validarForm);
+document.getElementById('regBtn').addEventListener('click', validarForm);}}

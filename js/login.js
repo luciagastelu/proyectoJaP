@@ -40,7 +40,7 @@ function validarForm(event){
         setTimeout(() => {
             window.location.href = "index.html";
         }, 2000); 
-    }
+  }
 }
 
 function showAlertError() {

@@ -42,14 +42,3 @@ function validarForm(event){
         }, 2000); 
   }
 }
-
-function showAlertError() {
-    alert("Por favor, completa todos los campos antes de enviar el formulario.");
-}
-
-function showAlertSuccess() {
-    alert("¡Inicio de sesión exitoso!");
-}
-
-// Event listener al botón de ingresar
-document.getElementById('regBtn').addEventListener('click', validarForm);}}

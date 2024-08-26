@@ -208,61 +208,58 @@ body {
 /* Pantalla Login */
 
 .recuadro { /* Recuadro del div que contiene elementos del login */
-  border: 1px solid #5e5e5e; /* Borde */
-  padding: 2vw 3vw; /* Espacio interno entre el borde y el contenido, primero arriba y abajo y luego derecha e izquierda */
-  margin: auto; /*Espacio externo a izquierda y derecha del recuadro*/
-  margin-top: 15%; /* Espacio externo superior del recuadro */
+  padding: 5% 5% 5% 5%; /* Espacio interno entre el borde y el contenido, arriba y abajo, izq y der*/
+  margin: auto; /*Espacio externo,izquierda y derecha del recuadro*/
+  margin-top: 8%; /* Espacio externo superior del recuadro */
   text-align: center; /* Centrar elementos dentro del recuadro */
   background-color: rgba(0, 0, 0, 0.1); /* Fondo semitransparente para el div */
-  border-radius: 0.5vw; /* Redondear borde */
+  border-radius: 5%; /* Redondear borde */
   height: 30%; /* Altura div */
   width: 50%; /* Ancho div */
 }
 
 .titulologin { /* Titulo Bienvenido */
-  font-size: 4vw;
+  font-size: 300%;
   font-family: Verdana, Geneva, Tahoma, sans-serif;/* Fuente de la letra */
   color: #ea9512; /* Color al titulo */
-  margin-top:1vw; /* Espacio superior entre el elemento y el elemento anterior */
 }
 
 .campo_texto::placeholder { /* Campos que se vacían cuando los voy a completar */
   color: #666666; /* Color del texto del placeholder */
   opacity: 0.7; /* Transparencia del texto del placeholder */
   padding: 8%; /* Espacio interno */
-  font-size: 1.2vw; /* Tamaño de la fuente */ 
+  font-size: 70%; /* Tamaño de la fuente */ 
 }
 
 .campo_texto { /* Recuadro para ingresar texto usuario y contraseña */
   background-color: #dcdcdc;
-  border-radius: 0.5vw;/* Redondear bordes */
-  height: 3vw; /* Altura recuadro */
-  width: 20vw; /* Ancho recuadro */
-  border: 1px solid #6d6d6d; /* Color y grosor de bordes */
+  border-radius: 10vw;/* Redondear bordes */
+  height: 200%; /* Altura recuadro */
+  width: 80%; /* Ancho recuadro */
+  border: 5% solid #6d6d6d; /* Color y grosor de bordes */
   box-shadow: 0 4px 1px rgba(0, 0, 0, 0.1); /* Sombra a los campos */
-  margin-top:0.8vw; /* Espacio superior entre el elemento y el elemento anterior */
+  margin-top:10%; /* Espacio superior entre el elemento y el elemento anterior */
 }
 
 .botoningresar { /* Boton ingresar */
   background-color: #dcdcdc; /* Color de fondo */
   padding: 0.2vw 1vw; /* Espacio interno */
   border: 1px solid #6d6d6d;
-  border-radius: 1.5vw;; /* Redondear bordes */
+  border-radius: 10vw; /* Redondear bordes */
   cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-  font-size: 1.5vw; /* Tamaño de la fuente */
-  margin-top:0.8vw; /* Espacio superior entre el elemento y el elemento anterior */
+  font-size: 110%; /* Tamaño de la fuente */
+  margin-top:10%; /* Espacio superior entre el elemento y el elemento anterior */
 }
 
 .olvido { /* Texto final de olvido de contraseña*/
   margin-bottom:0.02vw; /* Espacio entre el texto de los diferentes renglones */
-  font-size: 1vw; /* Tamaño de la fuente */
-  margin-top: 1.8vw; /* Espacio superior entre el elemento y el elemento anterior */
+  font-size: 70%; /* Tamaño de la fuente */
+  margin-top: 10%; /* Espacio superior entre el elemento y el elemento anterior */
 }
 
 .registro { /* Texto final de registro */
-  margin-bottom:0.02vw; /* Espacio entre el texto de los diferentes renglones */
-  font-size: 1vw; /* Tamaño de la fuente */
-  margin-top: 0.5vw; /* Espacio superior entre el elemento y el elemento anterior */
+  font-size: 70%; /* Tamaño de la fuente */
+  margin-top: 5%; /* Espacio superior entre el elemento y el elemento anterior */
 }
 
 a {

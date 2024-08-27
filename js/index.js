@@ -14,7 +14,15 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
     // Verificamos si el usuario está autenticado
+    
+    
     let usuario = localStorage.getItem("userEmail");
+
+    if (usuario === null){ //Si no hay un usuario en el localStoragen nos manda a login.html
+        window.location.href = "login.html";
+        return; //sale de la función para que no se ejecute el resto del código
+    }
+
     const loginLinkElement = document.getElementById('login-link'); 
     // Selecciona el enlace por su id
 

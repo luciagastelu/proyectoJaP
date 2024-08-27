@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function(){
         loginLinkElement.href = "#";
     } else {
         // Si no hay un usuario en el localStorage, redirige a login.html
+        window.location.href = "login.html";
         loginLinkElement.textContent = 'Iniciar Sesión'; 
         // Muestra "Iniciar Sesión" si no hay usuario
     }

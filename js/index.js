@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function(){
     
     let usuario = localStorage.getItem("userEmail");
 
-    if (usuario === null){ //Si no hay un usuario en el localStoragen nos manda a login.html
+    if (usuario === ""){ //Si no hay un usuario en el localStoragen nos manda a login.html
         window.location.href = "login.html";
         return; //sale de la función para que no se ejecute el resto del código
     }

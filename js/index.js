@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function(){
     if (usuario) { // Si hay un usuario en el localStorage
         // Cambiar el texto del enlace a mostrar el usuario
         loginLinkElement.textContent = usuario;
+        loginLinkElement.href = "#";
     } else {
         // Si no hay un usuario en el localStorage, redirige a login.html
         loginLinkElement.textContent = 'Iniciar Sesión'; 

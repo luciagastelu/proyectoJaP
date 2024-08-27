@@ -12,18 +12,18 @@ document.addEventListener("DOMContentLoaded", function(){
         localStorage.setItem("catID", 103);
         window.location = "products.html"
     });
- //Verificamos si el usuario está autenticado
-    let usuario = localStorage.getItem("userEmail");
-    if (usuario === null){ //Si no hay un usuario en el localStoragen nos manda a login.html
-        window.location.href = "login.html";
-        return; //sale de la función para que no se ejecute el resto del código
-    }
-    //Actualizamos el correo de Usuario
-     const userEmailElement = document.getElementById ('user-email');
 
-    if (usuario){
-        userEmailElement.textContent = usuario;
-    } else{
-        userEmailElement.textContent = 'Aún no has iniciado sesión'; 
+    // Verificamos si el usuario está autenticado
+    let usuario = localStorage.getItem("userEmail");
+    const loginLinkElement = document.getElementById('login-link'); 
+    // Selecciona el enlace por su id
+
+    if (usuario) { // Si hay un usuario en el localStorage
+        // Cambiar el texto del enlace a mostrar el usuario
+        loginLinkElement.textContent = usuario;
+    } else {
+        // Si no hay un usuario en el localStorage, redirige a login.html
+        loginLinkElement.textContent = 'Iniciar Sesión'; 
+        // Muestra "Iniciar Sesión" si no hay usuario
     }
 });

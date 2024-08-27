@@ -25,9 +25,10 @@ function validarForm(event){
     } else { 
         // Mostrar alerta de éxito
         showAlertSuccess();
+
+        // Guardar la sesión        
+         localStorage.setItem('userEmail', username); 
         // Redirige al inicio
         window.location.href = "index.html";
-         // Guardar la sesión        
-         localStorage.setItem('userEmail', username);
     }    
 }

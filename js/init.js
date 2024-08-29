@@ -12,8 +12,8 @@ let showSpinner = function(){
 }
 
 let hideSpinner = function(){
-  document.getElementById("spinner-wrapper").style.display = "none";
-}
+  
+document.getElementById("spinner-wrapper").style.display = "none";}
 
 let getJSONData = function(url){
     let result = {};
@@ -39,7 +39,6 @@ let getJSONData = function(url){
         return result;
     });
 }
-
 
 function verificarAutenticacion() {
     let usuario = localStorage.getItem("userEmail");

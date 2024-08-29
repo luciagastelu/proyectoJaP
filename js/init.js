@@ -39,3 +39,24 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+
+function verificarAutenticacion() {
+    let usuario = localStorage.getItem("userEmail");
+    const loginLinkElement = document.getElementById('login-link'); // Selecciona el enlace por su id
+
+    if (usuario === null || usuario === "") { 
+        // Si no hay un usuario en el localStorage, redirige a login.html
+        window.location.href = "login.html";
+        return; // Sale de la función para que no se ejecute el resto del código
+    } else {
+        // Si hay un usuario en el localStorage, muestra el usuario y ajusta el enlace
+        loginLinkElement.textContent = usuario;
+        loginLinkElement.href = "#";
+    }
+}
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  verificarAutenticacion();
+})

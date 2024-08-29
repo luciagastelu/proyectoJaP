@@ -188,15 +188,71 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+.container {
+  width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+  display: flex; /* Flexbox para alinear elementos hijos */
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
 
-table {
-  table-layout: fixed;
-  width: 75%;
-  height: 150px;
-  border-collapse: collapse;
-  border: black 1px solid;
-  text-align: center;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+.table {
+  width: 75%;
+  border-collapse: collapse;
+}
+
+.table td,
+.table th {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: center; /* Alineación centrada por defecto */
+}
+
+.table th {
+  background-color: orange;
+  color: #ffffff;
+}
+
+@media (max-width: 700px) {
+  .table thead {
+    display: none; /* Mantener oculto el <thead> en móviles */
+  }
+
+  .table, 
+  .table tbody, 
+  .table tr, 
+  .table td {
+    display: block; /* Cambiar a diseño de bloque */
+    width: 100%; /* Ancho completo para cada elemento */
+  }
+
+  .table tr {
+    margin-bottom: 15px; /* Separación entre filas */
+  }
+
+  .table td {
+    text-align: left; /* Alineación a la izquierda en móviles */
+    padding-left: 50%; /* Dejar espacio para pseudo-elementos */
+    position: relative; /* Necesario para posicionar el pseudo-elemento */
+  }
+
+  .table td::before {
+    content: attr(data-label); /* Etiquetas basadas en los atributos data-label */
+    position: absolute;
+    left: 0; /* Alineación izquierda del pseudo-elemento */
+    width: 45%; /* Ajusta el ancho del pseudo-elemento */
+    padding-left: 15px; /* Espaciado a la izquierda */
+    font-weight: bold; /* Negrita para los pseudo-elementos */
+    text-align: left; /* Alineación del pseudo-elemento */
+  }
+}
+
+
+
 
 body {
   

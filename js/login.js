@@ -29,6 +29,6 @@ function validarForm(event){
         // Guardar la sesión        
          localStorage.setItem('userEmail', username); 
         // Redirige al inicio
-        window.location.href = "index.html";
+        window.location.href = "index.html"; 
     }    
 }

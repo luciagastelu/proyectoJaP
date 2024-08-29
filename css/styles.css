@@ -219,7 +219,6 @@ body {
 }
 
 .titulologin { /* Titulo Bienvenido */
-  font-size: 300%;
   font-family: Verdana, Geneva, Tahoma, sans-serif;/* Fuente de la letra */
   color: #ea9512; /* Color al titulo */
 }

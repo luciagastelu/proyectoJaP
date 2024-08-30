@@ -192,7 +192,6 @@ a.custom-card:hover {
   width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
   justify-content: center; /* Centrar horizontalmente */
   align-items: center; /* Centrar verticalmente */
-
 }
 
 * {

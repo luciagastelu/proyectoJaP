@@ -193,7 +193,11 @@ a.custom-card:hover {
   justify-content: center; /* Centrar horizontalmente */
   align-items: center; /* Centrar verticalmente */
 }
-
+.container-table {
+  display: flex; /*centra el contenido */
+  justify-content: center; /* Centra horizontalmente la tabla */
+  width: 100%; /* Para que el contenedor ocupe todo el ancho que esté disponible */
+}
 * {
   box-sizing: border-box;
 }

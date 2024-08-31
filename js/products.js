@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {   //document.addEvent
   
         //Ahora procedemos a crear las celdas para cada uno de los datos del producto 
         const celdaImagen = document.createElement('td'); 
+        celdaImagen.setAttribute('data-label', 'Imagen');
         const img = document.createElement('img'); 
         img.src = producto.image; //Esta es la URL de la imagen del producto 
         img.alt = producto.name; //Nos proporciona una descripción textual para la imágen salida de acá, por ejemplo: <img src="imagen.jpg" alt="Descripción de la imagen"> 
@@ -38,12 +39,15 @@ document.addEventListener("DOMContentLoaded", function() {   //document.addEvent
         celdaImagen.appendChild(img); //Hace que la imégen quede como un hijo de la celdaImagen(es decir que agrega la imagen a la celda de la tabla)
   
         const celdaNombre = document.createElement('td'); //Crea una celda td
+        celdaNombre.setAttribute('data-label', 'Nombre');
         celdaNombre.textContent = producto.name; //pone el nombre del producto adentro de la celda de la tabla
   
         const celdaDescripcion = document.createElement('td');
+        celdaDescripcion.setAttribute('data-label', 'Descripción');
         celdaDescripcion.textContent = producto.description; //crea una celda para la descripción del producto y le asigna el texto que aparece en la descripción 
   
         const celdaPrecio = document.createElement('td');
+        celdaPrecio.setAttribute('data-label', 'Precio');
         celdaPrecio.textContent = `${producto.currency} ${producto.cost}`; //crea una celda para los precios del producto y le asigna el texto correspondiente (el precio)
   
         const celdaCantidadVendidos = document.createElement('td');

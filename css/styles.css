@@ -195,7 +195,6 @@ a.custom-card:hover {
   justify-content: center; /* Centrar horizontalmente */
   align-items: center; /* Centrar verticalmente */
   text-align: -webkit-center;
-}
 
 * {
   box-sizing: border-box;

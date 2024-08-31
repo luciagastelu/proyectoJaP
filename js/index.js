@@ -1,5 +1,6 @@
 //manejar los clicks en las categorías
 document.addEventListener("DOMContentLoaded", function(){
+    //verificarAutenticacion();
     document.getElementById("autos").addEventListener("click", function() {
         localStorage.setItem("catID", 101);
         window.location = "products.html"

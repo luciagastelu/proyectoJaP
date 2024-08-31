@@ -188,11 +188,13 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+
 .container {
   width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
   justify-content: center; /* Centrar horizontalmente */
   align-items: center; /* Centrar verticalmente */
-
+  text-align: -webkit-center;
 }
 
 * {

@@ -1,3 +1,5 @@
+/* JSON ANTERIOR
+
 // Comenzamos a hacer uso de fetch para importar y mostrar los productos 
 
 document.addEventListener("DOMContentLoaded", function() {   //document.addEventListener[...] hace que el código no se ejecute hasta que la página html se haya cargado 
@@ -66,3 +68,62 @@ document.addEventListener("DOMContentLoaded", function() {   //document.addEvent
   }
 })
 
+FIN DE CODIGO JSON ANTERIOR */
+
+// JSON NUEVA TABLA
+
+document.addEventListener('DOMContentLoaded', function() {
+  const url = 'https://japceibal.github.io/emercado-api/cats_products/101.json'; // URL del JSON
+  fetch(url)
+      .then(response => response.json()) // Convierte la respuesta a JSON
+      .then(data => {
+          const container = document.getElementById('products-container'); // Selecciona el contenedor
+          data.products.forEach(product => { // Itera sobre cada producto en el JSON
+              const productHTML = `
+                  <div class="row justify-content-center mb-3">
+                      <div class="col-md-12">
+                          <div class="card shadow-0 border rounded-3">
+                              <div class="card-body">
+                                  <div class="row g-0">
+                                      <div class="col-xl-3 col-md-4 d-flex justify-content-center">
+                                          <div class="bg-image hover-zoom ripple rounded ripple-surface me-md-3 mb-3 mb-md-0">
+                                              <img src="${product.image}" class="w-100" alt="${product.name}" />
+                                              <a href="#!">
+                                                  <div class="hover-overlay">
+                                                      <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                                                  </div>
+                                              </a>
+                                          </div>
+                                      </div>
+                                      <div class="col-xl-6 col-md-5 col-sm-7">
+                                          <h5>${product.name}</h5>
+                                          <div class="d-flex flex-row">
+                                              <div class="text-warning mb-1 me-2">
+                                                  <span class="ms-1"></span>
+                                              </div>
+                                              <span class="text-muted">${product.soldCount} vendidos</span>
+                                          </div>
+                                          <p class="text mb-4 mb-md-0">${product.description}</p>
+                                      </div>
+                                      <div class="col-xl-3 col-md-3 col-sm-5">
+                                          <div class="d-flex flex-row align-items-center mb-1">
+                                              <h4 class="mb-1 me-1">USD ${product.cost}</h4>
+                                          </div>
+                                          <div class="mt-4">
+                                              <button class="btn btn-primary shadow-0" type="button">Comprar</button>
+                                              <a href="#!" class="btn btn-light border px-2 pt-2 icon-hover">
+                                                  <i class="fas fa-heart fa-lg px-1"></i>
+                                              </a>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              `;
+              container.innerHTML += productHTML; // Añade el HTML generado al contenedor
+          });
+      })
+      .catch(error => console.error('Error fetching the data:', error)); // Manejo de errores
+});

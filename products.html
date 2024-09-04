@@ -44,21 +44,108 @@
   </nav>
   <main class="pb-5 container">
     <div class="container">
-      <!-- Agregamos la tabla para mostrar los productos -->
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Imagen</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Descripción</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Cantidad Vendidos</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Las filas de productos se agregan automáticamente -->
-        </tbody>
-      </table>
+      
+      <div class="p-3 text-center bg-white border-bottom">
+        <div class="container">
+          
+          
+            <!-- Carrito y lista de deseos -->
+
+            <div class="order-lg-last col-lg-5 col-sm-8 col-8">
+              <div class="d-flex float-end">
+                <a href="LINK" class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center" target="_blank"> <i class="fas fa-heart m-1 me-md-2"></i><p class="d-none d-md-block mb-0">LISTA DE DESEADOS</p> </a>
+                <a href="LINK" class="border rounded py-1 px-3 nav-link d-flex align-items-center" target="_blank"> <i class="fas fa-shopping-cart m-1 me-md-2"></i><p class="d-none d-md-block mb-0">MI CARRITO</p> </a>
+              </div>
+            </div>
+
+            <!-- Carrito y lista de deseos -->
+    
+            <!-- Buscador -->
+            <div class="col-lg-5 col-md-12 col-12">
+              <div class="input-group float-center">
+                <div class="form-outline">
+                  <input type="search" id="form1" class="form-control" />
+                  <label class="form-label" for="form1">Buscar</label>
+                </div>
+                <button type="button" class="btn btn-primary shadow-0">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </div>
+            <!-- Buscador -->
+          
+    </header>
+    
+    
+          <!-- Filtros -->
+    
+          <div class="container">
+            <div class="row">
+                <div class="col text-end">
+                    <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
+                        <input type="radio" class="btn-check" name="options" id="sortAsc">
+                        <label for="sortAsc">Ordenar por</label>
+                        <select class="form-select d-inline-block w-auto border pt-1" id="sortSelect">
+                            <option value="1">Relevantes</option>
+                            <option value="2">Precio ascendente</option>
+                            <option value="3">Precio descendente</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
+                    <div class="row container p-0 m-0">
+                        <div class="col">
+                            <p class="font-weight-normal text-end my-2">Precio</p>
+                        </div>
+                        <div class="col">
+                            <input class="form-control" type="number" placeholder="Min. USD 12500" id="rangeFilterCountMin">
+                        </div>
+                        <div class="col">
+                            <input class="form-control" type="number" placeholder="Máx. USD 3500000" id="rangeFilterCountMax">
+                        </div>
+                        <div class="col-3 p-0">
+                            <div class="btn-group" role="group">
+                                <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+                                <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                
+              
+            </header>
+            <div class="container-small mt-4" id="products-container">
+
+            <!-- Los productos se agregarán aquí automáticamente -->
+             
+          </div>
+            <hr />
+    
+            <!-- Pagination
+            <nav aria-label="Page navigation example" class="d-flex justify-content-center mt-3">
+              <ul class="pagination">
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+            Pagination -->
       
     </div>
   </main>

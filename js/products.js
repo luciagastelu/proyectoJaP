@@ -73,7 +73,11 @@ FIN DE CODIGO JSON ANTERIOR */
 // JSON NUEVA TABLA
 
 document.addEventListener('DOMContentLoaded', function() {
-  const url = 'https://japceibal.github.io/emercado-api/cats_products/101.json'; // URL del JSON
+// Obtén el catID del localStorage
+const catID = localStorage.getItem('catID');
+// Verifica si catID está disponible
+if (catID) {
+  const url =  `https://japceibal.github.io/emercado-api/cats_products/${catID}.json`; // URL del JSON
   fetch(url)
       .then(response => response.json()) // Convierte la respuesta a JSON
       .then(data => {
@@ -126,4 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
           });
       })
       .catch(error => console.error('Error fetching the data:', error)); // Manejo de errores
+    } else {
+        console.error('catID no encontrado en localStorage');
+    }
 });

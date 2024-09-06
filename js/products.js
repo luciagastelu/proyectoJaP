@@ -81,9 +81,34 @@ if (catID) {
   fetch(url)
       .then(response => response.json()) // Convierte la respuesta a JSON
       .then(data => {
+
+    // Función para aplicar filtros y ordenación
+    const applyFiltersAndSorting = () => {
+        const minPrice = parseFloat(document.getElementById('rangeFilterCountMin').value) || 0;
+        const maxPrice = parseFloat(document.getElementById('rangeFilterCountMax').value) || Infinity;
+        const sortOrder = document.getElementById('sortSelect').value;
+
+        // Filtra los productos
+        const filteredProducts = data.products.filter(product =>
+          product.cost >= minPrice && product.cost <= maxPrice
+        );
+
+        // Ordena los productos
+        const sortedProducts = filteredProducts.sort((a, b) => {
+          if (sortOrder === '2') { // Precio ascendente
+            return a.cost - b.cost;
+          } else if (sortOrder === '3') { // Precio descendente
+            return b.cost - a.cost;
+          } else { // Relevancia (artículos vendidos descendentes)
+            return b.soldCount - a.soldCount;
+          }
+        });
           const container = document.getElementById('products-container'); // Selecciona el contenedor
-          data.products.forEach(product => { // Itera sobre cada producto en el JSON
-              const productHTML = `
+          container.innerHTML = ''; // Limpiar el contenedor actual
+
+          // Añade los productos filtrados y ordenados al contenedor
+          sortedProducts.forEach(product => {
+          const productHTML = `
                   <div class="row justify-content-center mb-3">
                       <div class="col-md-12">
                           <div class="card shadow-0 border rounded-3">
@@ -128,7 +153,20 @@ if (catID) {
               `;
               container.innerHTML += productHTML; // Añade el HTML generado al contenedor
           });
-      })
+      };
+      // Aplica filtros y ordenación al cargar
+      applyFiltersAndSorting();
+
+      // Maneja los eventos
+      document.getElementById('rangeFilterCount').addEventListener('click', applyFiltersAndSorting);
+      document.getElementById('clearRangeFilter').addEventListener('click', function() {
+        document.getElementById('rangeFilterCountMin').value = '';
+        document.getElementById('rangeFilterCountMax').value = '';
+        applyFiltersAndSorting();
+      });
+      document.getElementById('sortSelect').addEventListener('change', applyFiltersAndSorting);
+    })
+      
       .catch(error => console.error('Error fetching the data:', error)); // Manejo de errores
     } else {
         console.error('catID no encontrado en localStorage');

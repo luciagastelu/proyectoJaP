@@ -193,6 +193,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.json())
             .then(data => {
                 const container = document.getElementById('products-container');
+
                 const products = data.products;
 
                 // Mostrar todos los productos inicialmente
@@ -209,6 +210,50 @@ document.addEventListener('DOMContentLoaded', function() {
                                                     <div class="bg-image hover-zoom ripple rounded ripple-surface me-md-3 mb-3 mb-md-0">
                                                         <img src="${product.image}" class="w-100" alt="${product.name}" />
                                                     </div>
+=======
+                
+                // Aplica filtros y ordenación al cargar
+                const applyFiltersAndSorting = () => {
+                    const minPrice = parseFloat(document.getElementById('rangeFilterCountMin').value) || 0;
+                    const maxPrice = parseFloat(document.getElementById('rangeFilterCountMax').value) || Infinity;
+                    const sortOrder = document.getElementById('sortSelect').value;
+
+                    // Filtra los productos
+                    const filteredProducts = data.products.filter(product =>
+                        product.cost >= minPrice && product.cost <= maxPrice
+                     );
+
+                    // Ordena los productos
+                    const sortedProducts = filteredProducts.sort((a, b) => {
+                        if (sortOrder === '2') { // Precio ascendente
+                            return a.cost - b.cost;
+                        } else if (sortOrder === '3') { // Precio descendente
+                            return b.cost - a.cost;
+                        } else { // Relevancia (artículos vendidos descendentes)
+                            return b.soldCount - a.soldCount;
+                        }
+                    });
+
+                    // Limpia el contenedor actual
+                    container.innerHTML = '';
+                   
+                    // Muestra los productos
+                    sortedProducts.forEach(product => {
+                      const productHTML = `
+                        <div class="row justify-content-center mb-3">
+                            <div class="col-md-12">
+                                <div class="card shadow-0 border rounded-3">
+                                    <div class="card-body">
+                                        <div class="row g-0">
+                                            <div class="col-xl-3 col-md-4 d-flex justify-content-center">
+                                                <div class="bg-image hover-zoom ripple rounded ripple-surface me-md-3 mb-3 mb-md-0">
+                                                    <img src="${product.image}" class="w-100" alt="${product.name}" />
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-md-5 col-sm-7">
+                                                <h5 class="product-clickable" data-product-id="${product.id}" style="cursor:pointer;">${product.name}</h5>
+                                                <div class="d-flex flex-row">
+                                                    <span class="text-muted">${product.soldCount} vendidos</span>
                                                 </div>
                                                 <div class="col-xl-6 col-md-5 col-sm-7">
                                                     <h5 class="product-clickable" data-product-id="${product.id}" style="cursor:pointer;">${product.name}</h5>
@@ -258,6 +303,24 @@ document.addEventListener('DOMContentLoaded', function() {
                     displayItem(filterData); // Mostrar los productos filtrados
                 });
             })
+                        </div>
+                    `;
+                    container.innerHTML += productHTML;
+                });
+            };
+
+            // Aplica filtros y ordenación al cargar
+            applyFiltersAndSorting();
+
+            // Maneja los eventos
+            document.getElementById('rangeFilterCount').addEventListener('click', applyFiltersAndSorting);
+            document.getElementById('clearRangeFilter').addEventListener('click', function() {
+                 document.getElementById('rangeFilterCountMin').value = '';
+                 document.getElementById('rangeFilterCountMax').value = '';
+                 applyFiltersAndSorting();
+            });
+            document.getElementById('sortSelect').addEventListener('change', applyFiltersAndSorting);
+        })
             .catch(error => console.error('Error fetching the data:', error));
     } else {
         console.error('catID no encontrado en localStorage');

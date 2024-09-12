@@ -183,9 +183,7 @@ if (catID) {
 //Nuevo código que se le agrega al que teniamos, ahora cuando se hace click en el nombre del producto
 //se guarda el id del producto además del de la categoría y te redirije a product-info.html
 document.addEventListener('DOMContentLoaded', function() {
-    // Obtener el catID del localStorage
     const catID = localStorage.getItem('catID');
-
     if (catID) {
         const url = `https://japceibal.github.io/emercado-api/cats_products/${catID}.json`;
 
@@ -193,11 +191,10 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.json())
             .then(data => {
                 const container = document.getElementById('products-container');
-
                 const products = data.products;
 
-                // Mostrar todos los productos inicialmente
-                function displayItem(items) {
+                // Función para mostrar productos
+                function displayItems(items) {
                     container.innerHTML = '';
                     items.forEach(product => {
                         const productHTML = `
@@ -210,50 +207,6 @@ document.addEventListener('DOMContentLoaded', function() {
                                                     <div class="bg-image hover-zoom ripple rounded ripple-surface me-md-3 mb-3 mb-md-0">
                                                         <img src="${product.image}" class="w-100" alt="${product.name}" />
                                                     </div>
-=======
-                
-                // Aplica filtros y ordenación al cargar
-                const applyFiltersAndSorting = () => {
-                    const minPrice = parseFloat(document.getElementById('rangeFilterCountMin').value) || 0;
-                    const maxPrice = parseFloat(document.getElementById('rangeFilterCountMax').value) || Infinity;
-                    const sortOrder = document.getElementById('sortSelect').value;
-
-                    // Filtra los productos
-                    const filteredProducts = data.products.filter(product =>
-                        product.cost >= minPrice && product.cost <= maxPrice
-                     );
-
-                    // Ordena los productos
-                    const sortedProducts = filteredProducts.sort((a, b) => {
-                        if (sortOrder === '2') { // Precio ascendente
-                            return a.cost - b.cost;
-                        } else if (sortOrder === '3') { // Precio descendente
-                            return b.cost - a.cost;
-                        } else { // Relevancia (artículos vendidos descendentes)
-                            return b.soldCount - a.soldCount;
-                        }
-                    });
-
-                    // Limpia el contenedor actual
-                    container.innerHTML = '';
-                   
-                    // Muestra los productos
-                    sortedProducts.forEach(product => {
-                      const productHTML = `
-                        <div class="row justify-content-center mb-3">
-                            <div class="col-md-12">
-                                <div class="card shadow-0 border rounded-3">
-                                    <div class="card-body">
-                                        <div class="row g-0">
-                                            <div class="col-xl-3 col-md-4 d-flex justify-content-center">
-                                                <div class="bg-image hover-zoom ripple rounded ripple-surface me-md-3 mb-3 mb-md-0">
-                                                    <img src="${product.image}" class="w-100" alt="${product.name}" />
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6 col-md-5 col-sm-7">
-                                                <h5 class="product-clickable" data-product-id="${product.id}" style="cursor:pointer;">${product.name}</h5>
-                                                <div class="d-flex flex-row">
-                                                    <span class="text-muted">${product.soldCount} vendidos</span>
                                                 </div>
                                                 <div class="col-xl-6 col-md-5 col-sm-7">
                                                     <h5 class="product-clickable" data-product-id="${product.id}" style="cursor:pointer;">${product.name}</h5>
@@ -282,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         container.innerHTML += productHTML;
                     });
 
-                    // Agregar el event listener para registrar el clic en un producto y guardar el id
+                    // Agregar el event listener para los clics en productos
                     document.querySelectorAll('.product-clickable').forEach(item => {
                         item.addEventListener('click', function() {
                             const selectedProductID = this.getAttribute('data-product-id');
@@ -292,35 +245,51 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                 }
 
-                displayItem(products); // Mostrar todos los productos inicialmente
+                // Función para aplicar filtros y ordenación
+                function applyFiltersAndSorting() {
+                    const minPrice = parseFloat(document.getElementById('rangeFilterCountMin').value) || 0;
+                    const maxPrice = parseFloat(document.getElementById('rangeFilterCountMax').value) || Infinity;
+                    const sortOrder = document.getElementById('sortSelect').value;
 
-                // Configurar el evento de búsqueda
+                    // Filtrar productos
+                    const filteredProducts = products.filter(product =>
+                        product.cost >= minPrice && product.cost <= maxPrice
+                    );
+
+                    // Ordenar productos
+                    const sortedProducts = filteredProducts.sort((a, b) => {
+                        if (sortOrder === '2') { // Precio ascendente
+                            return a.cost - b.cost;
+                        } else if (sortOrder === '3') { // Precio descendente
+                            return b.cost - a.cost;
+                        } else { // Relevancia (vendidos descendentes)
+                            return b.soldCount - a.soldCount;
+                        }
+                    });
+
+                    // Mostrar productos
+                    displayItems(sortedProducts);
+                }
+
+                // Mostrar productos inicialmente
+                displayItems(products);
+
+                // Configurar eventos
                 document.getElementById('searchBar').addEventListener('keyup', (e) => {
                     const searchData = e.target.value.toLowerCase();
-                    const filterData = products.filter((item) => {
-                        return item.name.toLowerCase().includes(searchData);
-                    });
-                    displayItem(filterData); // Mostrar los productos filtrados
+                    const filteredData = products.filter(item => item.name.toLowerCase().includes(searchData));
+                    displayItems(filteredData);
                 });
+
+                document.getElementById('rangeFilterCount').addEventListener('click', applyFiltersAndSorting);
+                document.getElementById('clearRangeFilter').addEventListener('click', function() {
+                    document.getElementById('rangeFilterCountMin').value = '';
+                    document.getElementById('rangeFilterCountMax').value = '';
+                    applyFiltersAndSorting();
+                });
+                document.getElementById('sortSelect').addEventListener('change', applyFiltersAndSorting);
+
             })
-                        </div>
-                    `;
-                    container.innerHTML += productHTML;
-                });
-            };
-
-            // Aplica filtros y ordenación al cargar
-            applyFiltersAndSorting();
-
-            // Maneja los eventos
-            document.getElementById('rangeFilterCount').addEventListener('click', applyFiltersAndSorting);
-            document.getElementById('clearRangeFilter').addEventListener('click', function() {
-                 document.getElementById('rangeFilterCountMin').value = '';
-                 document.getElementById('rangeFilterCountMax').value = '';
-                 applyFiltersAndSorting();
-            });
-            document.getElementById('sortSelect').addEventListener('change', applyFiltersAndSorting);
-        })
             .catch(error => console.error('Error fetching the data:', error));
     } else {
         console.error('catID no encontrado en localStorage');

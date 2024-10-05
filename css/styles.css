@@ -472,3 +472,72 @@ textarea {
 .btn-group .btn.cancel: hover {
   background: light;
 }
+.wrapper-comments {
+  background: var(--white);
+  padding: 2rem;
+  max-width: 576px;
+  width: 100%;
+  border-radius: .75rem;
+  box-shadow: var(--shadow);
+}
+
+.wrapper-comments h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.rating-comments {
+  display: flex;
+  justify-content: flex-start; /* Cambiado para alinear a la izquierda */
+  align-items: center;
+  grid-gap: .5rem;
+  font-size: 2rem;
+  color: rgb(245, 222, 18);
+  margin-bottom: 1rem; /* Cambiado de 2rem a 1rem para que esté más cerca del nombre */
+}
+
+.rating-comments .star {
+  cursor: pointer;
+}
+
+#comment-section {
+  background-color: #f8f9fa; /* Fondo suave */
+  padding: 20px; /* Espaciado interno */
+  border-radius: 10px; /* Bordes redondeados */
+  margin-top: 20px; /* Espacio superior */
+}
+
+.comentario {
+  background-color: #ffffff; /* Fondo blanco para los comentarios */
+  border: 1px solid #dee2e6; /* Borde suave */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 15px; /* Espaciado interno */
+  margin-bottom: 10px; /* Espacio entre comentarios */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.calificacion {
+  color: #ffc107; /* Color dorado para las estrellas */
+  font-size: 1.2em; /* Tamaño de fuente mayor para las estrellas */
+  margin-bottom: 5px;
+  float: left;
+}
+
+.usuario {
+  font-weight: bold; /* Usuario en negrita */
+  margin-top: 45px; /* Espacio superior */
+  text-align: left;
+}
+
+.fecha {
+  color: #6c757d; /* Color gris para la fecha */
+  font-size: 0.9em; /* Tamaño de fuente más pequeño */
+  float: right; /* Alinear a la derecha */
+  margin-top: -65px;
+}
+
+.texto-comentario {
+  margin-top: 10px; /* Espacio superior */
+  text-align: left; /* Alinear texto a la izquierda */
+}

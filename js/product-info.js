@@ -1,3 +1,5 @@
+let selectedProductID;
+
 document.addEventListener('DOMContentLoaded', function() {
     // Obtenemos del localStorage el ID del producto y el ID de la categoría
     const selectedProductID = localStorage.getItem('selectedProductID');
@@ -27,14 +29,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Mostramos los productos con el mismo ID de la categoría
         displayRelatedProducts(relatedProducts);
-      } else {
-        console.error('Producto o categoría no encontrados');
-      }
+    // Solicitar comentarios aquí después de mostrar el producto
+    const commentURL = `https://japceibal.github.io/emercado-api/products_comments/${selectedProductID}.json`; // Usar el ID correcto
+
+    // Solicitud de API
+    fetch(commentURL)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error en la respuesta de la API');
+        }
+        return response.json();
     })
-        .catch(error => console.error('Error fetching the product or category details:', error));
-      } else {
-        console.error('No se encontró un selectedProductID o catID en localStorage');
-      }
+    .then(data => {
+        mostrarComentarios(data);
+    })
+    .catch(error => {
+        console.error("Error al obtener los comentarios:", error);
+    });
+} else {
+    console.error('Producto o categoría no encontrados');
+}
+})
+.catch(error => console.error('Error fetching the product or category details:', error));
+} else {
+console.error('No se encontró un selectedProductID o catID en localStorage');
+}
+
 
     // Función para mostrar el producto actual
         function displayProduct(selectedProduct, categoryName) {
@@ -140,3 +160,38 @@ allStar.forEach((item, idx)=> {
         }
     })
 })
+
+// Función para mostrar comentarios
+function mostrarComentarios(comentarios) {
+    const commentSection = document.getElementById("comment-section");
+    commentSection.innerHTML = "";
+
+    // Verifica si hay comentarios para mostrar
+    if (comentarios.length === 0) {
+        commentSection.innerHTML = "<p>No hay comentarios disponibles.</p>";
+        return;
+    }
+
+    comentarios.forEach(comentario => {
+        const commentElement = document.createElement("div");
+        commentElement.classList.add("comentario");
+
+        // Calificación, Usuario, Comentario y Fecha
+        const estrellas = Array.from({ length: 5 }, (_, index) => 
+            `<i class='bx ${index < comentario.score ? 'bxs-star' : 'bx-star'}'></i>` // Aquí generamos las estrellas
+        ).join(''); 
+        const usuario = `<strong>${comentario.user}</strong>`;
+        const fecha = `<em>${comentario.dateTime}</em>`;
+        const textoComentario = `<p>${comentario.description}</p>`;
+
+        commentElement.innerHTML = `
+            <div class="calificacion">${estrellas}</div>
+            <div class="usuario">${usuario}</div>
+            <div class="fecha">${fecha}</div>
+            <div class="texto-comentario">${textoComentario}</div>
+        `;
+
+        // Añadir el comentario al contenedor
+        commentSection.appendChild(commentElement);
+    });
+}

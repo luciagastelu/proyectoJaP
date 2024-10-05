@@ -161,41 +161,6 @@ allStar.forEach((item, idx)=> {
     })
 })
 
-// Función para mostrar comentarios
-function mostrarComentarios(comentarios) {
-    const commentSection = document.getElementById("comment-section");
-    commentSection.innerHTML = "";
-
-    // Verifica si hay comentarios para mostrar
-    if (comentarios.length === 0) {
-        commentSection.innerHTML = "<p>No hay comentarios disponibles.</p>";
-        return;
-    }
-
-    comentarios.forEach(comentario => {
-        const commentElement = document.createElement("div");
-        commentElement.classList.add("comentario");
-
-        // Calificación, Usuario, Comentario y Fecha
-        const estrellas = Array.from({ length: 5 }, (_, index) => 
-            `<i class='bx ${index < comentario.score ? 'bxs-star' : 'bx-star'}'></i>` // Aquí generamos las estrellas
-        ).join(''); 
-        const usuario = `<strong>${comentario.user}</strong>`;
-        const fecha = `<em>${comentario.dateTime}</em>`;
-        const textoComentario = `<p>${comentario.description}</p>`;
-
-        commentElement.innerHTML = `
-            <div class="calificacion">${estrellas}</div>
-            <div class="usuario">${usuario}</div>
-            <div class="fecha">${fecha}</div>
-            <div class="texto-comentario">${textoComentario}</div>
-        `;
-
-        // Añadir el comentario al contenedor
-        commentSection.appendChild(commentElement);
-    });
-}
-
 document.addEventListener('DOMContentLoaded', function() {
     const commentForm = document.getElementById("comment-box");
 
@@ -221,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
         commentForm.reset();
 
         // Volver a mostrar comentarios
-        mostrarComentarios(getComments());
+        mostrarComentarios();
     });
 
     // Función para guardar comentarios en localStorage
@@ -238,55 +203,87 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Función para mostrar comentarios
-    function mostrarComentarios(comentarios) {
+    function mostrarComentarios() {
         const commentSection = document.getElementById("comment-section");
         commentSection.innerHTML = "";
 
-        // Verifica si hay comentarios para mostrar
-        if (comentarios.length === 0) {
-            commentSection.innerHTML = "<p>No hay comentarios disponibles.</p>";
-            return;
-        }
+        // Obtener comentarios desde la API
+        const selectedProductID = localStorage.getItem('selectedProductID');
+        const commentURL = `https://japceibal.github.io/emercado-api/products_comments/${selectedProductID}.json`;
 
-        comentarios.forEach(comentario => {
-            const commentElement = document.createElement("div");
-            commentElement.classList.add("comentario");
+        fetch(commentURL)
+            .then(response => response.json())
+            .then(apiComments => {
+                // Obtener comentarios desde localStorage
+                const localComments = getComments();
 
-            // Calificación, Usuario, Comentario y Fecha
-            const estrellas = Array.from({ length: 5 }, (_, index) => 
-                `<i class='bx ${index < comentario.score ? 'bxs-star' : 'bx-star'}'></i>`
-            ).join(''); 
-            const usuario = `<strong>${comentario.user}</strong>`;
-            const fecha = `<em>${formatDate(comentario.dateTime)}</em>`;
-            const textoComentario = `<p>${comentario.description}</p>`;
+                // Combinar los comentarios de la API con los locales
+                const allComments = [...apiComments, ...localComments];
 
-            commentElement.innerHTML = `
-                <div class="calificacion">${estrellas}</div>
-                <div class="usuario">${usuario}</div>
-                <div class="fecha">${fecha}</div>
-                <div class="texto-comentario">${textoComentario}</div>
-            `;
+                // Verifica si hay comentarios para mostrar
+                if (allComments.length === 0) {
+                    commentSection.innerHTML = "<p>No hay comentarios disponibles.</p>";
+                    return;
+                }
 
-            // Añadir el comentario al contenedor
-            commentSection.appendChild(commentElement);
-        });
+                // Mostrar todos los comentarios combinados
+                allComments.forEach(comentario => {
+                    const commentElement = document.createElement("div");
+                    commentElement.classList.add("comentario");
+
+                    // Calificación, Usuario, Comentario y Fecha
+                    const estrellas = Array.from({ length: 5 }, (_, index) =>
+                        `<i class='bx ${index < comentario.score ? 'bxs-star' : 'bx-star'}'></i>`
+                    ).join('');
+                    const usuario = `<strong>${comentario.user}</strong>`;
+                    const fecha = `<em>${formatDate(comentario.dateTime)}</em>`;
+                    const textoComentario = `<p>${comentario.description}</p>`;
+
+                    commentElement.innerHTML = `
+                        <div class="calificacion">${estrellas}</div>
+                        <div class="usuario">${usuario}</div>
+                        <div class="fecha">${fecha}</div>
+                        <div class="texto-comentario">${textoComentario}</div>
+                    `;
+
+                    // Añadir el comentario al contenedor
+                    commentSection.appendChild(commentElement);
+                });
+            })
+            .catch(error => console.error("Error al obtener los comentarios:", error));
     }
 
     // Función para formatear la fecha en el formato `YYYY-MM-DD HH:MM:SS`
     function formatDate(dateString) {
         const date = new Date(dateString);
-        
+
         // Extraer cada parte de la fecha
         const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0'); // Los meses empiezan desde 0
+        const month = String(date.getMonth() + 1).padStart(2, '0');
         const day = String(date.getDate()).padStart(2, '0');
         const hours = String(date.getHours()).padStart(2, '0');
         const minutes = String(date.getMinutes()).padStart(2, '0');
-        const seconds = String(date.getSeconds()).padStart(2, '0');
+        
 
-        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        return `${day}/${month}/${year} ${hours}:${minutes}`;
     }
 
-    // Llamar a mostrarComentarios con los comentarios almacenados
-    mostrarComentarios(getComments());
+    // Mostrar comentarios al cargar la página
+    mostrarComentarios();
 });
+
+
+    // Función para guardar comentarios en localStorage
+    function saveComment(comment) {
+        const comments = getComments(); // Obtiene todos los comentarios anteriores
+        comments.push(comment); // Agrega el nuevo comentario al array
+        localStorage.setItem('comments', JSON.stringify(comments)); // Guarda el array actualizado
+    }
+
+    // Función para obtener comentarios de localStorage
+    function getComments() {
+        const comments = localStorage.getItem('comments');
+        return comments ? JSON.parse(comments) : [];
+    }
+
+    

@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const rating = Array.from(document.querySelectorAll('.rating .star.active')).length; // Contar las estrellas activas
         const opinion = commentForm.opinion.value; // Obtener el comentario
-        const username = localStorage.getItem('username') || "Usuario"; // Obtener el nombre del usuario guardado en localStorage
+        const username = localStorage.getItem('userEmail') || "Usuario"; // Obtener el nombre del usuario guardado en localStorage
 
         // Crear un objeto comentario
         const comment = {

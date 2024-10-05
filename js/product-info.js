@@ -195,3 +195,98 @@ function mostrarComentarios(comentarios) {
         commentSection.appendChild(commentElement);
     });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const commentForm = document.getElementById("comment-box");
+
+    commentForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Evita que se recargue la página
+
+        const rating = Array.from(document.querySelectorAll('.rating .star.active')).length; // Contar las estrellas activas
+        const opinion = commentForm.opinion.value; // Obtener el comentario
+        const username = localStorage.getItem('username') || "Usuario"; // Obtener el nombre del usuario guardado en localStorage
+
+        // Crear un objeto comentario
+        const comment = {
+            score: rating,
+            description: opinion,
+            user: username,
+            dateTime: new Date().toISOString()
+        };
+
+        // Guardar el comentario en localStorage
+        saveComment(comment);
+
+        // Reiniciar el formulario
+        commentForm.reset();
+
+        // Volver a mostrar comentarios
+        mostrarComentarios(getComments());
+    });
+
+    // Función para guardar comentarios en localStorage
+    function saveComment(comment) {
+        const comments = getComments(); // Obtiene todos los comentarios anteriores
+        comments.push(comment); // Agrega el nuevo comentario al array
+        localStorage.setItem('comments', JSON.stringify(comments)); // Guarda el array actualizado
+    }
+
+    // Función para obtener comentarios de localStorage
+    function getComments() {
+        const comments = localStorage.getItem('comments');
+        return comments ? JSON.parse(comments) : [];
+    }
+
+    // Función para mostrar comentarios
+    function mostrarComentarios(comentarios) {
+        const commentSection = document.getElementById("comment-section");
+        commentSection.innerHTML = "";
+
+        // Verifica si hay comentarios para mostrar
+        if (comentarios.length === 0) {
+            commentSection.innerHTML = "<p>No hay comentarios disponibles.</p>";
+            return;
+        }
+
+        comentarios.forEach(comentario => {
+            const commentElement = document.createElement("div");
+            commentElement.classList.add("comentario");
+
+            // Calificación, Usuario, Comentario y Fecha
+            const estrellas = Array.from({ length: 5 }, (_, index) => 
+                `<i class='bx ${index < comentario.score ? 'bxs-star' : 'bx-star'}'></i>`
+            ).join(''); 
+            const usuario = `<strong>${comentario.user}</strong>`;
+            const fecha = `<em>${formatDate(comentario.dateTime)}</em>`;
+            const textoComentario = `<p>${comentario.description}</p>`;
+
+            commentElement.innerHTML = `
+                <div class="calificacion">${estrellas}</div>
+                <div class="usuario">${usuario}</div>
+                <div class="fecha">${fecha}</div>
+                <div class="texto-comentario">${textoComentario}</div>
+            `;
+
+            // Añadir el comentario al contenedor
+            commentSection.appendChild(commentElement);
+        });
+    }
+
+    // Función para formatear la fecha en el formato `YYYY-MM-DD HH:MM:SS`
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        
+        // Extraer cada parte de la fecha
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Los meses empiezan desde 0
+        const day = String(date.getDate()).padStart(2, '0');
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        const seconds = String(date.getSeconds()).padStart(2, '0');
+
+        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    }
+
+    // Llamar a mostrarComentarios con los comentarios almacenados
+    mostrarComentarios(getComments());
+});

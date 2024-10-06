@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => console.error("Error al obtener los comentarios:", error));
     }
 
-    // Función para formatear la fecha en el formato `YYYY-MM-DD HH:MM:SS`
+    // Función para formatear la fecha en el formato `DD/MM/YYYY HH:MM`
     function formatDate(dateString) {
         const date = new Date(dateString);
 

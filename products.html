@@ -9,6 +9,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/2ca2a20b83.js" crossorigin="anonymous"></script>
   <style>
     body {
       background-image: url('img/login_fondo.jpg');
@@ -42,9 +43,10 @@
       </div>
     </div>
   </nav>
+
   <main class="pb-5 container">
-    <div class="container">
-      
+    
+    <div class="container">  
       <div class="p-3 text-center bg-white border-bottom">
         <div class="container">
           
@@ -59,19 +61,19 @@
             </div>
 
             <!-- Carrito y lista de deseos -->
-    
             <!-- Buscador -->
-            <div class="col-lg-5 col-md-12 col-12">
-              <div class="input-group float-center">
-                <div class="form-outline">
-                  <input type="search" id="form1" class="form-control" />
-                  <label class="form-label" for="form1">Buscar</label>
+          
+            <div class="container">
+              <div class="sidebar">
+                <div class="sidebody" style="height: auto;">
+                  <div class="searchbar">
+                    <input placeholder="Buscar..." id="searchBar" name="searchBar" type="text">
+                    <i class="fa-solid fa-magnifying-glass glass"></i>
+                  </div>
                 </div>
-                <button type="button" class="btn btn-primary shadow-0">
-                  <i class="fas fa-search"></i>
-                </button>
               </div>
             </div>
+            
             <!-- Buscador -->
           <div>
             <input type="search" >
@@ -95,17 +97,18 @@
                     </div>
                 </div>
             </div>
+
             <div class="row">
-                <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
+                <div class="col-lg-6 offset-lg-0 col-md-12 mb-1 container">
                     <div class="row container p-0 m-0">
                         <div class="col">
-                            <p class="font-weight-normal text-end my-2">Precio</p>
+                            <p class="font-weight-normal text-end my-2">Precio USD</p>
                         </div>
                         <div class="col">
-                            <input class="form-control" type="number" placeholder="Min. USD 12500" id="rangeFilterCountMin">
+                            <input class="form-control" type="number" placeholder="Min." id="rangeFilterCountMin">
                         </div>
                         <div class="col">
-                            <input class="form-control" type="number" placeholder="Máx. USD 3500000" id="rangeFilterCountMax">
+                            <input class="form-control" type="number" placeholder="Máx." id="rangeFilterCountMax">
                         </div>
                         <div class="col-3 p-0">
                             <div class="btn-group" role="group">

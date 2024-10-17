@@ -251,9 +251,6 @@ a.custom-card:hover {
   }
 }
 
-
-
-
 body {
   
   background-repeat: no-repeat;
@@ -323,6 +320,7 @@ a {
   font-weight: bold; /* Ponerle negrita al texto */
 }
 }
+
 
 #etiqueta_perfil {
   max-width: 500px;
@@ -417,3 +415,225 @@ button:hover {
   background-color: #121212;
   color: white;
 }
+=======
+/* Fin login*/
+
+
+/*Inicio Categorias*/
+
+* {
+  margin: 0%;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+}
+
+.sidebar {
+  max-width: 400px; /* Ancho máximo para el contenedor del buscador */
+  border: 1% solid #eee;
+  padding: 1%;
+  margin: 1%;
+  box-shadow: 0px 0px 3px gray;
+  display:grid;
+ 
+}
+
+.searchbar {
+  width: 100%; /* Ocupa el ancho completo del contenedor .sidebar */
+  max-width: 300px; /* Ancho máximo para el buscador */
+  background-color: #eee;
+  border-radius: 1%;
+  margin: 1%;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 0px 2px rgba(0,0,0,0.2); /* Sombra para mejorar visibilidad */
+}
+
+input {
+  width: 85%;
+  border: none;
+  outline: none;
+  background: none;
+  flex: 1; /* Ocupa el espacio disponible */
+  padding: 5px; /* Espaciado dentro del campo de entrada */
+}
+
+.glass {
+  color: #333; /* Color del icono de búsqueda */
+  margin-left: 1px; /* Espacio entre el input y el icono */
+}
+
+.glass:hover {
+  color: orangered;
+  cursor: pointer;
+}
+
+/* Fin categorias */
+
+.wrapper {
+  background: var(--white);
+  padding: 2rem;
+  max-width: 576px;
+  width: 100%;
+  border-radius: .75rem;
+  box-shadow: var(--shadow);
+}
+
+.wrapper h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-gap: .5rem;
+  font-size: 2rem;
+  color: rgb(245, 222, 18);
+  margin-bottom: 2rem;
+}
+
+.rating .star {
+  cursor: pointer;
+}
+
+.rating .star.active {
+  opacity: 0;
+  animation: animate .5s ease-in-out forwards;
+}
+
+@keyframes animate {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.rating .star:hover {
+  transform: scale(1.1);
+}
+
+textarea {
+  width: 100%;
+  background: whitesmoke;
+  padding: 1rem;
+  border-radius: .5rem;
+  border: none;
+  outline: none;
+  resize: none;
+  margin-bottom: .5rem;
+}
+
+.btn-group {
+  display: flex;
+  grid-gap: .5rem;
+  align-items: center;
+}
+
+.btn-group .btn {
+  padding: .75rem 1rem;
+  border-radius: .5rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: .875rem;
+  font-weight: 500;
+}
+
+.btn-group .btn.submit {
+  background: lightskyblue;
+  color: white;
+}
+
+.btn-group .btn.submit: hover {
+  background: blue;
+}
+
+.btn-group .btn.cancel {
+  background: white;
+  color: lightskyblue;
+}
+
+.btn-group .btn.cancel: hover {
+  background: light;
+}
+.wrapper-comments {
+  background: var(--white);
+  padding: 2rem;
+  max-width: 576px;
+  width: 100%;
+  border-radius: .75rem;
+  box-shadow: var(--shadow);
+}
+
+.wrapper-comments h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.rating-comments {
+  display: flex;
+  justify-content: flex-start; /* Cambiado para alinear a la izquierda */
+  align-items: center;
+  grid-gap: .5rem;
+  font-size: 2rem;
+  color: rgb(245, 222, 18);
+  margin-bottom: 1rem; /* Cambiado de 2rem a 1rem para que esté más cerca del nombre */
+}
+
+.rating-comments .star {
+  cursor: pointer;
+}
+
+#comment-section {
+  background-color: #f8f9fa; /* Fondo suave */
+  padding: 20px; /* Espaciado interno */
+  border-radius: 10px; /* Bordes redondeados */
+  margin-top: 20px; /* Espacio superior */
+}
+
+.comentario {
+  background-color: #ffffff; /* Fondo blanco para los comentarios */
+  border: 1px solid #dee2e6; /* Borde suave */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 15px; /* Espaciado interno */
+  margin-bottom: 10px; /* Espacio entre comentarios */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.calificacion {
+  color: #ffc107; /* Color dorado para las estrellas */
+  font-size: 1.2em; /* Tamaño de fuente mayor para las estrellas */
+  margin-bottom: 5px;
+  float: left;
+}
+
+.usuario {
+  font-weight: bold; /* Usuario en negrita */
+  margin-top: 45px; /* Espacio superior */
+  text-align: left;
+}
+
+.fecha {
+  color: #6c757d; /* Color gris para la fecha */
+  font-size: 0.9em; /* Tamaño de fuente más pequeño */
+  float: right; /* Alinear a la derecha */
+  margin-top: -65px;
+}
+
+.texto-comentario {
+  margin-top: 10px; /* Espacio superior */
+  text-align: left; /* Alinear texto a la izquierda */
+}
+

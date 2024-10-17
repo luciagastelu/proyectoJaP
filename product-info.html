@@ -5,11 +5,19 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
-
+  <style>
+    body {
+      background-image: url('img/login_fondo.jpg');
+      background-size: cover fixed;
+    }
+  </style>
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
 
 <body>
@@ -31,19 +39,106 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
-           <a class="nav-link" id="login-link" href="login.html">Iniciar Sesión</a>
+            <a class="nav-link" id="login-link" href="login.html">Iniciar Sesión</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-  <main>
+  <main class="pb-5 container">
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      
+      <div class="p-3 text-center bg-white border-bottom">
+        <div class="container">
+          
+          
+            <!-- Carrito y lista de deseos -->
+
+            <div class="order-lg-last col-lg-5 col-sm-8 col-8">
+              <div class="d-flex float-end">
+                <a href="LINK" class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center" target="_blank"> <i class="fas fa-heart m-1 me-md-2"></i><p class="d-none d-md-block mb-0">LISTA DE DESEADOS</p> </a>
+                <a href="LINK" class="border rounded py-1 px-3 nav-link d-flex align-items-center" target="_blank"> <i class="fas fa-shopping-cart m-1 me-md-2"></i><p class="d-none d-md-block mb-0">MI CARRITO</p> </a>
+              </div>
+            </div>
+
+            <!-- Carrito y lista de deseos -->
+    
+           
+          
+    </header>
+    
+    
+          <!-- Filtros Eliminados -->
+<div class="container">
+  <div class="row">
+      <div class="col text-end">
+        
       </div>
+  </div>
+  <div class="row">
+      <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
+          
+      </div>
+  </div>
+</div>
+<!-- Contenedor para el producto actual -->
+</header>
+  <div id="products-container">
+    <h1 id="categoryName"></h1>
+      <h1 id="categoryDescription"></h1>
+  </div>
+</div>
+
+
+<div class="wrapper"></div>
+  <h3>¡Déjanos tu opinión!</h3>
+  <form id="comment-box">
+    <div class="rating">
+      <input type="number" name="rating" hidden>
+      <i class='bx bx-star star'></i>
+      <i class='bx bx-star star'></i>
+      <i class='bx bx-star star'></i>
+      <i class='bx bx-star star'></i>
+      <i class='bx bx-star star'></i>
     </div>
+    <textarea name="opinion" cols="30" rows="5" placeholder="Escribe tu reseña aquí..."></textarea>
+    <div class="btn-group">
+      <button type="submit" class="btn submit">Enviar</button>
+      <button class="btn cancel">Cancelar</button>
+    </div>
+  </form>
+ </div>
+
+  <!--CONTENEDOR PARA COMENTARIOS-->
+  <div id="comment-section">
+    <h2>Comentarios</h2>
+  
+  <!-- Aquí va el HTML de la caja de comentarios -->
+  <div class="wrapper-comments">
+    
+    <h3>Comentarios</h3>
+    
+    <div class="rating-comments">
+        <i class='bx bx-star star' data-index="0"></i>
+        <i class='bx bx-star star' data-index="1"></i>
+        <i class='bx bx-star star' data-index="2"></i>
+        <i class='bx bx-star star' data-index="3"></i>
+        <i class='bx bx-star star' data-index="4"></i>
+    </div>
+
+    <input type="text" placeholder="Nombre de usuario" class="username" />
+
+    <p class="date">Fecha: <span id="currentDate"></span></p>
+  </div>
+  </div>
+
+<!-- Contenedor para los productos relacionados (con mismo ID de la categoria) -->
+<div class="container mt-5">
+  <h3>Quizás también te pueda interesar...</h3>
+  <div class="row" id="related-products-container"></div>
+</div>
   </main>
+  
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">

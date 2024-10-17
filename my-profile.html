@@ -45,7 +45,7 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
-             <a class="nav-link" id="login-link" href="login.html">Iniciar Sesión</a>
+            <a class="nav-link" id="login-link" href="login.html">Iniciar Sesión</a>
 
           </li>
         </ul>
@@ -53,11 +53,46 @@
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+  
+    <div id="etiqueta_perfil">
+      <div class="perfil_de_usuario">
+          <h1>Perfil de Usuario</h1>
+          <p>Todos los campos que contengan * son obligatorios</p> 
+          <form>
+              <label for="nombre">Nombre*</label>
+              <input type="text" id="nombre" required>
+  
+              <label for="segundo-nombre">Segundo Nombre</label>
+              <input type="text" id="segundo-nombre">
+  
+              <label for="apellido">Apellido*</label>
+              <input type="text" id="apellido" required>
+  
+              <label for="segundo-apellido">Segundo Apellido</label>
+              <input type="text" id="segundo-apellido">
+  
+              <label for="email">E-mail*</label>
+              <input type="email" id="email" required>
+  
+              <label for="telefono">Teléfono de contacto</label>
+              <input type="tel" id="telefono">
+  
+              <label for="foto">Foto de perfil</label>
+              <input type="file" id="foto">
+  
+              <div class="modo-dia-noche">
+                  <span>Modo Día</span>
+                  <label class="switch">
+                      <input type="checkbox" id="modo-dia-noche" onchange="toggleMode()">
+                      <span class="slider"></span>
+                  </label>
+                  <span>Modo Noche</span>
+              </div>
+  
+              <button type="button" onclick="guardarCambios()">Guardar cambios</button>
+          </form>
       </div>
-    </div>
+  </div>
   </main>
   <footer class="text-muted">
     <div class="container">

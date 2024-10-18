@@ -541,3 +541,56 @@ textarea {
   margin-top: 10px; /* Espacio superior */
   text-align: left; /* Alinear texto a la izquierda */
 }
+
+.nav-item {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  align-content: right;
+  top: 108%;
+  left: 0;
+  background-color: #212529;
+  border-radius: 2px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  padding: 10px 0;
+  min-width: 350px;
+  z-index: 999;
+}
+
+.nav-item:hover .dropdown-menu {
+  display: block;
+}
+
+.nav-item:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 8px 20px;
+  color: #b8b8b8 !important; /* Color gris para los elementos del menú */
+  text-decoration: none;
+}
+
+.dropdown-item:hover {
+  background-color: #333; /* Color de fondo más claro al pasar el mouse */
+  color: #fff !important; /* Color blanco al pasar el mouse para mejor contraste */
+}
+
+
+.navbar-nav .nav-item:last-child .dropdown-menu {
+  left: auto;
+  right: -150%;
+}
+
+.hr-dropdown{
+  border: 0; 
+  height: 1px; 
+  background-color: #ccc; 
+  margin: 0; 
+  width: 100%; 
+  align-self: center;
+}

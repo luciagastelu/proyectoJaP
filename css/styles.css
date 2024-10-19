@@ -815,6 +815,9 @@ body.night-mode .container {
   color: white; /* Texto blanco dentro del contenedor */
 }
 
-
+body.night-mode .btn {
+  background-color: #444;
+  color: white;
+}
 
 

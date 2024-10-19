@@ -821,3 +821,34 @@ body.night-mode .btn {
 }
 
 
+.night-mode .perfil-usuario-bio {
+  background-color: black;
+  color: white;
+}
+
+.night-mode .perfil-usuario-footer {
+  background-color: black;
+  color: white;
+}
+
+.night-mode .list-group-item {
+  background-color: black;
+  color: white;
+}
+
+.night-mode .wrapper {
+  background-color: black;
+  color: white;
+}
+
+.night-mode .btn-group {
+  background-color: black;
+  color: white;
+}
+
+.night-mode .comentario {
+  background-color: black;
+  color: white;
+}
+
+

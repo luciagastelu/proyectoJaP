@@ -801,7 +801,7 @@ body.night-mode .btn-guardar:hover {
   align-self: center;
 }
 
-/* Modo Día (por defecto) */
+/* Modo Día */
 body {
   background-color: white;
   color: black;

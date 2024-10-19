@@ -773,7 +773,7 @@ body {
   align-self: center;
 }
 
-/* Modo Día */
+/* Modo Día - por defecto */
 body {
   background-color: white;
   color: black;

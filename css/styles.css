@@ -650,34 +650,6 @@ body {
   background: #45a0d1;
 }
 
-/* Modo noche */
-body.night-mode {
-  background-color: #333;
-  color: #fff;
-}
-
-body.night-mode .perfil-usuario-bio,
-body.night-mode .perfil-usuario-footer {
-  background-color: #444;
-  color: #fff;
-}
-
-body.night-mode input[type="text"],
-body.night-mode input[type="email"],
-body.night-mode input[type="tel"] {
-  background-color: #555;
-  color: #fff;
-  border-color: #666;
-}
-
-body.night-mode .btn-guardar {
-  background: #2980b9;
-}
-
-body.night-mode .btn-guardar:hover {
-  background: #3498db;
-}
-=======
 .wrapper-comments {
   background: var(--white);
   padding: 2rem;
@@ -800,4 +772,52 @@ body.night-mode .btn-guardar:hover {
   width: 100%; 
   align-self: center;
 }
+
+/* Modo Día - por defecto */
+body {
+  background-color: white;
+  color: black;
+}
+
+/* Modo Noche */
+body.night-mode {
+  background-color: black;
+  color: white;
+}
+
+/*.card {
+  background-color: white;
+}*/
+
+body.night-mode .card {
+  background-color: #333;
+  color: white;
+}
+
+.btn {
+  background-color: #007bff;
+  color: white;
+}
+
+/*body.night-mode .btn {
+  background-color: #444;
+  color: white;
+}*/
+
+
+body.night-mode #comment-section {
+  background-color: black; /* Fondo negro para el contenedor */
+  color: white; /* Texto blanco dentro del contenedor */
+}
+
+body.night-mode .container {
+  background-color: black; /* Fondo negro para el contenedor */
+  color: white; /* Texto blanco dentro del contenedor */
+}
+
+body.night-mode .btn {
+  background-color: #444;
+  color: white;
+}
+
 

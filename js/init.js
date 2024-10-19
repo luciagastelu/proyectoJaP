@@ -59,3 +59,33 @@ function verificarAutenticacion() {
 document.addEventListener('DOMContentLoaded', function () {
   verificarAutenticacion();
 })
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const toggleThemeBtn = document.getElementById('toggle-theme');
+  const currentTheme = localStorage.getItem('theme') || 'day';  // Verificar el tema guardado o usar 'day' por defecto
+
+  // Aplicar el tema guardado al cargar la página
+  if (currentTheme === 'night') {
+      document.body.classList.add('night-mode');
+      if (toggleThemeBtn) {
+          toggleThemeBtn.textContent = 'Modo Día';
+      }
+  }
+
+  // Si hay un botón de alternancia de tema en la página
+  if (toggleThemeBtn) {
+      // Escuchar el clic en el botón para alternar el tema
+      toggleThemeBtn.addEventListener('click', function() {
+          document.body.classList.toggle('night-mode');
+
+          if (document.body.classList.contains('night-mode')) {
+              localStorage.setItem('theme', 'night');  // Guardar preferencia en localStorage
+              toggleThemeBtn.textContent = 'Modo Día';  // Cambiar el texto del botón
+          } else {
+              localStorage.setItem('theme', 'day');
+              toggleThemeBtn.textContent = 'Modo Noche';
+          }
+      });
+  }
+});

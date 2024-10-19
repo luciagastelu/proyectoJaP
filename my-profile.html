@@ -10,6 +10,14 @@
   <link href="css/styles.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/2ca2a20b83.js" crossorigin="anonymous"></script>
   <style>
+    body {
+      background-image: url('img/login_fondo.jpg');
+      background-size: cover fixed;
+    }
+    body.night-mode {
+    background-image: url('img/foscnuevo.jpg'); /* Imagen para modo noche */
+    background-size: cover fixed;
+}
     .bd-placeholder-img {
       font-size: 1.125rem;
       text-anchor: middle;
@@ -121,6 +129,8 @@
         </section>
 
   </main>
+  <!--Boton modo noche-->
+  <button id="toggle-theme" class="btn btn-secondary">Modo Noche</button>
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">

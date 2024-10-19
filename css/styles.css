@@ -460,7 +460,7 @@ textarea {
   color: white;
 }
 
-.btn-group .btn.submit: hover {
+.btn-group .btn.submit:hover {
   background: blue;
 }
 
@@ -469,7 +469,7 @@ textarea {
   color: lightskyblue;
 }
 
-.btn-group .btn.cancel: hover {
+.btn-group .btn.cancel:hover {
   background: light;
 }
 
@@ -800,3 +800,4 @@ body.night-mode .btn-guardar:hover {
   width: 100%; 
   align-self: center;
 }
+

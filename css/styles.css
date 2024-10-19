@@ -472,6 +472,212 @@ textarea {
 .btn-group .btn.cancel:hover {
   background: light;
 }
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f1f1f1;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.seccion-perfil-usuario {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.perfil-usuario-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.perfil-usuario-portada {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 17rem;
+  background: linear-gradient(45deg, #fcce6c, #53C0FB);
+  border-radius: 0 0 20px 20px;
+}
+
+.perfil-usuario-avatar {
+  display: flex;
+  width: 180px;
+  height: 180px;
+  align-items: center;
+  justify-content: center;
+  border: 7px solid #ffffff;
+  background-color: #dcdcdc;
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(0,0,0,0.2);
+  position: absolute;
+  bottom: -40px;
+  left: calc(50% - 90px);
+  z-index: 1;
+}
+
+.perfil-usuario-avatar img {
+  width: 100%;
+  position: relative;
+  border-radius: 50%;
+}
+
+.perfil-usuario-avatar .boton-avatar {
+  position: absolute;
+  right: -2px;
+  top: -2px;
+  border: 0;
+  background-color: #fff;
+  box-shadow: 0 0 12px rgba(0,0,0,0.2);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.perfil-usuario-body {
+  width: 100%;
+  position: relative;
+  max-width: 750px;
+}
+
+.perfil-usuario-bio {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 0 12px rgba(0,0,0,0.2);
+  background-color: #fff;
+  border-radius: 15px;
+  width: 100%;
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+
+.perfil-usuario-bio h3 {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+.perfil-usuario-bio p {
+  color: #848484;
+  font-size: 0.95em;
+  width: 100%;
+}
+
+#bio-usuario {
+  display: none; /* Oculta solo la bio (información del usuario) */
+}
+
+
+.perfil-usuario-footer {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 0 12px rgba(0,0,0,0.2);
+  background-color: #fff;
+  border-radius: 15px;
+  width: 100%;
+}
+
+/* Ajustes generales */
+.form-group {
+  display: flex;
+  flex-direction: row; /* Mantiene íconos, etiquetas e inputs en línea */
+  align-items: center;
+  margin-bottom: 15px;
+  width: 100%; /* Asegura que cada grupo de formulario ocupe todo el ancho */
+  box-sizing: border-box; /* Asegura que padding y borders estén incluidos en el ancho */
+}
+
+.form-group i {
+  margin-right: 10px;
+  font-size: 1.2em;
+  align-self: center; /* Alinea el ícono en el centro verticalmente */
+}
+
+.form-group label {
+  flex-shrink: 0;
+  margin-right: 10px;
+  min-width: 120px; /* Asegura un ancho consistente para las etiquetas */
+  text-align: left;
+  align-self: center; /* Alinea la etiqueta en el centro verticalmente */
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"] {
+  flex-grow: 1; /* Hace que el input ocupe todo el espacio disponible */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  height: 40px; /* Mantiene la misma altura para todos los inputs */
+  width: 100%; /* Asegura que el input ocupe todo el espacio horizontal posible */
+  box-sizing: border-box; /* Incluye padding y borders en el ancho total */
+}
+
+.lista-datos {
+  width: 100%; /* Asegura que las columnas ocupen el 100% del contenedor */
+  display: flex;
+  flex-direction: column; /* Cambia a una disposición vertical */
+}
+
+
+
+
+.btn-guardar {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background: #53C0FB;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.btn-guardar:hover {
+  background: #45a0d1;
+}
+
+/* Modo noche */
+body.night-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+body.night-mode .perfil-usuario-bio,
+body.night-mode .perfil-usuario-footer {
+  background-color: #444;
+  color: #fff;
+}
+
+body.night-mode input[type="text"],
+body.night-mode input[type="email"],
+body.night-mode input[type="tel"] {
+  background-color: #555;
+  color: #fff;
+  border-color: #666;
+}
+
+body.night-mode .btn-guardar {
+  background: #2980b9;
+}
+
+body.night-mode .btn-guardar:hover {
+  background: #3498db;
+}
+=======
 .wrapper-comments {
   background: var(--white);
   padding: 2rem;
@@ -542,44 +748,56 @@ textarea {
   text-align: left; /* Alinear texto a la izquierda */
 }
 
-/* Modo Día (por defecto) */
-body {
-  background-color: white;
-  color: black;
+.nav-item {
+  position: relative;
 }
 
-/* Modo Noche */
-body.night-mode {
-  background-color: black;
-  color: white;
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  align-content: right;
+  top: 108%;
+  left: 0;
+  background-color: #212529;
+  border-radius: 2px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  padding: 10px 0;
+  min-width: 350px;
+  z-index: 999;
 }
 
-/*.card {
-  background-color: white;
-}*/
-
-body.night-mode .card {
-  background-color: #333;
-  color: white;
+.nav-item:hover .dropdown-menu {
+  display: block;
 }
 
-.btn {
-  background-color: #007bff;
-  color: white;
+.nav-item:hover .dropdown-menu {
+  display: block;
 }
 
-/*body.night-mode .btn {
-  background-color: #444;
-  color: white;
-}*/
-
-
-body.night-mode #comment-section {
-  background-color: black; /* Fondo negro para el contenedor */
-  color: white; /* Texto blanco dentro del contenedor */
+.dropdown-item {
+  display: block;
+  padding: 8px 20px;
+  color: #b8b8b8 !important; /* Color gris para los elementos del menú */
+  text-decoration: none;
 }
 
-body.night-mode .container {
-  background-color: black; /* Fondo negro para el contenedor */
-  color: white; /* Texto blanco dentro del contenedor */
+.dropdown-item:hover {
+  background-color: #333; /* Color de fondo más claro al pasar el mouse */
+  color: #fff !important; /* Color blanco al pasar el mouse para mejor contraste */
 }
+
+
+.navbar-nav .nav-item:last-child .dropdown-menu {
+  left: auto;
+  right: -150%;
+}
+
+.hr-dropdown{
+  border: 0; 
+  height: 1px; 
+  background-color: #ccc; 
+  margin: 0; 
+  width: 100%; 
+  align-self: center;
+}
+

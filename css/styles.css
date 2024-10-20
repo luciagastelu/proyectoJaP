@@ -770,12 +770,18 @@ body {
   background-color: #333; /* Color de fondo más claro al pasar el mouse */
   color: #fff !important; /* Color blanco al pasar el mouse para mejor contraste */
 }
+
+/* Evitar que el dropdown-menu se salga de la pantalla */
+.dropdown-menu {
+  max-width: calc(100vw - 20px); /* Se ajusta al tamaño de la ventana */
+}
+
 .dropdown-item:hover::before {
   content: '';
   position: absolute;
   top: 0;
   left: 5px;
-  width: calc(100% - 10px); /* Ajustar ancho si es necesario */
+  width: calc(100% - 10px); 
   height: 100%;
   background-color: #444;
   border-radius: 8px;
@@ -798,6 +804,37 @@ body {
   align-self: center;
 }
 
+@media screen and (max-width: 1200px) {
+  .dropdown-menu {
+    max-width: 90%; /* Que no ocupe más del 90% de la pantalla */
+  }
+}
+
+/* Para pantallas aún más pequeñas */
+@media screen and (max-width: 767px) {
+  .dropdown-menu {
+    left: 0;
+    right: 0;
+    width: 100%; /* Que ocupe el 100% del contenedor */
+  }
+  
+  .dropdown-item {
+    width: calc(100% - 2rem);
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  .dropdown-item:hover::before {
+    content: '';
+    position: absolute; /* Mantener absolute */
+    top: 0;
+    left: 0; /* Alinearlo completamente a la izquierda */
+    width: 100%; /* Asegurar que cubra todo el ancho */
+    height: 100%;
+    background-color: #444;
+    border-radius: 8px;
+    z-index: -1;
+    transition: background-color 0.3s ease;
+}
 /* Modo Día - por defecto */
 body {
   background-color: white;

@@ -220,10 +220,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                                         <h4 class="mb-1 me-1">USD ${product.cost}</h4>
                                                     </div>
                                                     <div class="mt-4">
-                                                        <button class="btn btn-primary shadow-0" type="button">Comprar</button>
-                                                        <a href="#!" class="btn btn-light border px-2 pt-2 icon-hover">
-                                                            <i class="fas fa-heart fa-lg px-1"></i>
-                                                        </a>
+                                                        <a href="cart.html" class="btn btn-light border px-2 pt-2 icon-hover"> <i class="fas fa-heart fa-lg px-1"></i> <button class="btn btn-primary shadow-0" type="button">Comprar</button></a>
                                                     </div>
                                                 </div>
                                             </div>

@@ -96,7 +96,7 @@ console.error('No se encontró un selectedProductID o catID en localStorage');
                                 <div class="d-flex justify-content-between align-items-center mt-auto">
                                     <p class="card-text mb-0">Categoria: ${categoryName}</p>
                                     <p class="card-text mb-0"><strong>Precio: USD ${selectedProduct.cost}</strong></p>
-                                    <a href="#" class="btn btn-primary">Comprar</a>
+                                      <a href="cart.html" class="btn btn-light border px-2 pt-2 icon-hover"> <button class="btn btn-primary shadow-0" type="button">Comprar</button></a>
                                 </div>
                             </div>
                         </div>

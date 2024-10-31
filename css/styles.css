@@ -835,6 +835,8 @@ body {
     z-index: -1;
     transition: background-color 0.3s ease;
 }
+}
+
 /* Modo Día - por defecto */
 body {
   background-color: white;
@@ -911,4 +913,148 @@ body.night-mode .btn {
 .night-mode .comentario {
   background-color: black;
   color: white;
-}}
+
+}
+
+/*ESTILOS PARA EL CARRITO*/
+.container .cart {
+  margin: 20px;
+}
+
+.cart h2 {
+  text-align: left;
+  font-weight: bolder;
+}
+
+.cart-container {
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+  background-color: #fff;
+}
+
+.container .cart i.fa-cart-shopping {
+  font-size: 2em;
+  position: absolute;
+  right: 130px; 
+  top: 70px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  gap: 15px;
+}
+
+.product-image {
+  width: 100px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 150px;
+  margin-left: 0px;
+  align-items: flex-start;
+}
+
+.product-name {
+  font-weight: bold;
+  margin: 0;
+}
+
+.product-quantity {
+  margin-top: 5px;
+}
+
+.product-price-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  min-width: 120px;
+}
+
+.product-price,
+.product-subtotal {
+  margin: 0;
+}
+
+.remove-btn {
+  margin-top: 5px;
+  align-self: flex-end;
+  color: black;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+.remove-btn:hover {
+  color: red; 
+}
+.remove-btn:active {
+  opacity: 0.6; 
+  transform: scale(0.95); 
+}
+
+.cart-total {
+  display: flex;
+  flex-direction: column; /* Cambia a columna para que los elementos se apilen verticalmente */
+  align-items: flex-end; /* Alinea los elementos a la derecha */
+  margin-top: 20px; 
+}
+
+/* Estilo del subtotal */
+.cart-total p {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: 0; /* Quita el margen para mejor alineación */
+}
+
+/* Estilo del botón Comprar */
+.purchase-btn {
+  background-color: #000000; /* Color verde para el botón */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.purchase-btn:hover {
+  background-color: #212422; /* Color de hover */
+}
+
+.purchase-btn:active {
+  transform: scale(0.98); /* Efecto de "presionado" */
+}
+
+.empty-cart {
+  background-color: #e0f7fa; /* Color celeste */
+  border: 2px solid #4db6ac; /* Color de borde */
+  border-radius: 10px; /* Bordes redondeados */
+  padding: 20px; /* Espaciado interno */
+  margin: 20px 0; /* Espaciado externo */
+}
+
+.empty-cart h4 {
+  font-size: 2em; /* Tamaño de letra grande */
+  margin: 0; /* Sin margen */
+}
+
+.empty-cart p {
+  font-size: 1.2em; /* Ajusta el tamaño del texto del mensaje */
+  margin-top: 10px; /* Espacio entre el título y el mensaje */
+}
+
+

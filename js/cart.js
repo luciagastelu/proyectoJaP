@@ -26,6 +26,9 @@ function displayItems(items) {
                                     <div class="mt-4">
                                         <a href="cart.html" class="btn btn-light border px-2 pt-2 icon-hover"> <i class="fas fa-heart fa-lg px-1"></i> <button class="btn btn-primary shadow-0" type="button">Comprar</button></a>
                                     </div>
+                                    <div class="col-3">
+                    <button class="btn btn-danger btn-sm remove-btn" data-index="${index}">Eliminar</button>
+                    </div>
                                 </div>
                             </div>
                         </div>
@@ -35,3 +38,93 @@ function displayItems(items) {
         `;
         container.innerHTML += productHTML;
     });
+    }
+    //cARRITO
+    function displayCart() {
+        const cartContainer = document.getElementById('cart-container');
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let subtotal = 0;
+    
+        // Si el carrito está vacío, mostrar un mensaje
+        if (cart.length === 0) {
+            cartContainer.innerHTML = `
+                <div class="alert alert-info text-center empty-cart">
+                    <h4 class="alert-heading">Tu carrito está vacío</h4>
+                    <p>¡Añade productos para comenzar a comprar!</p>
+                </div>
+            `;
+            //ocultar la sección del subtotal y botón de compra
+        document.querySelector('.cart-total').style.display = 'none'; // Oculta el subtotal y botón de compra
+            return;
+            return;
+        }
+    
+        // Limpiar contenido del contenedor
+        cartContainer.innerHTML = '';
+    
+        // Mostrar cada producto en el carrito
+        cart.forEach((product, index) => {
+            const itemSubtotal = product.cost * product.quantity;
+            subtotal += itemSubtotal;
+    
+            const productHTML = `
+                <div class="cart-item">
+        <img src="${product.image}" alt="${product.name}" class="product-image" />
+        
+        <div class="product-info">
+            <h5 class="product-name">${product.name}</h5>
+            <div class="product-quantity">
+                <label>Cantidad:
+                    <input type="number" value="${product.quantity}" min="1" data-product-id="${product.id}" class="quantity-input" style="width: 50px;" color="gray" />
+                </label>
+            </div>
+        </div>
+
+        <div class="product-price-info">
+            <p class="product-price">${product.currency} ${product.cost}</p>
+            <p class="product-subtotal">Subtotal: ${product.currency} ${itemSubtotal}</p>
+            <span class="remove-btn" data-index="${index}">Eliminar</span>
+        </div>
+    </div>
+            `;
+            cartContainer.innerHTML += productHTML;
+        });
+    
+        // Mostrar el subtotal general
+    document.querySelector('.subtotal').innerText = `USD ${subtotal}`;
+
+    // Configurar los eventos de "Eliminar" nuevamente después de renderizar el carrito
+    document.querySelectorAll('.remove-btn').forEach(button => {
+        button.addEventListener('click', removeItem);
+    });
+}
+
+// Actualizar la cantidad del producto y recalcular el subtotal
+document.getElementById('cart-container').addEventListener('change', function(event) {
+    if (event.target && event.target.matches('.quantity-input')) {
+        const productId = event.target.getAttribute('data-product-id');
+        const newQuantity = parseInt(event.target.value);
+        const cart = JSON.parse(localStorage.getItem('cart'));
+
+        const product = cart.find(item => item.id === productId);
+        if (product) {
+            product.quantity = newQuantity;
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+    }
+});
+
+// Función para eliminar producto
+function removeItem(event) {
+    const index = event.target.dataset.index;
+
+    const items = JSON.parse(localStorage.getItem('cart')) || [];
+    items.splice(index, 1); // Eliminar producto del array
+
+    localStorage.setItem('cart', JSON.stringify(items)); 
+    displayCart(); 
+}
+
+// Llamar a displayCart al cargar la página
+document.addEventListener('DOMContentLoaded', displayCart);

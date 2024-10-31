@@ -47,9 +47,32 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+      <div class="cart">
+        <h2>Carrito</h2>
+        <i class="fa-solid fa-cart-shopping"></i>
+        <div class="container" id="cart-container">
+          <div class="cart-item">
+            <img src="${product.image}" alt="${product.name}" class="product-image" />
+            <div class="product-info">
+                <h5 class="product-name">${product.name}</h5>
+                <div class="product-quantity">
+                    <label>Cantidad
+                        <input type="number" value="${product.quantity}" min="1" data-product-id="${product.id}" class="quantity-input" />
+                    </label>
+                </div>
+            </div>
+            <div class="product-price-info">
+                <p class="product-price">${product.currency} ${product.cost}</p>
+                <p class="product-subtotal">Subtotal ${product.currency} ${itemSubtotal}</p>
+                <button class="remove-btn btn btn-danger btn-sm" data-index="${index}">Eliminar</button>
+            </div>
+        </div>
+        </div>
+        <div class="cart-total">
+            <p>Subtotal <span class="subtotal">$0</span></p>
+            <button class="purchase-btn">Comprar</button>
+        </div>
+    </div>
     </div>
   </main>
   <footer class="text-muted">

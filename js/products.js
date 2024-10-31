@@ -292,3 +292,33 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('catID no encontrado en localStorage');
     }
 });
+
+//CARRITO
+// Agrega un listener a cada botón de comprar
+document.addEventListener('click', function(event) {
+    if (event.target && event.target.matches('.btn-primary')) {
+        const productElement = event.target.closest('.row');
+        const product = {
+            id: productElement.querySelector('.product-clickable').getAttribute('data-product-id'),
+            name: productElement.querySelector('h5').innerText,
+            cost: parseFloat(productElement.querySelector('h4').innerText.replace('USD ', '')),
+            currency: 'USD',
+            image: productElement.querySelector('img').src,
+            quantity: 1
+        };
+
+        // Obtener el carrito actual de localStorage o inicializar uno vacío
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // Verificar si el producto ya está en el carrito y actualizar cantidad
+        const existingProductIndex = cart.findIndex(item => item.id === product.id);
+        if (existingProductIndex !== -1) {
+            cart[existingProductIndex].quantity += 1;
+        } else {
+            cart.push(product);
+        }
+
+        // Guardar el carrito actualizado en localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }
+});

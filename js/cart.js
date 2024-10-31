@@ -130,7 +130,7 @@ function removeItem(event) {
 document.addEventListener('DOMContentLoaded', displayCart);
 
 //Agregar para que cambie de USD a $
-// Función de conversión de USD a $
+// Función para convertir de USD a $
 function convertToPESOS(usdAmount) {
     const exchangeRate = 40; // Tipo de cambio de USD a $
     return usdAmount * exchangeRate;
@@ -184,7 +184,7 @@ function displayCart() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     let subtotal = 0;
 
-    // Si el carrito está vacío, mostrar un mensaje
+    // Si el carrito está vacío, mostramos un mensaje
     if (cart.length === 0) {
         cartContainer.innerHTML = `
             <div class="alert alert-info text-center empty-cart">
@@ -196,10 +196,10 @@ function displayCart() {
         return;
     }
 
-    // Limpiar contenido del contenedor
+    // Limpiamos el contenido del contenedor
     cartContainer.innerHTML = '';
 
-    // Mostrar cada producto en el carrito
+    // Mostramos cada producto en el carrito
     cart.forEach((product, index) => {
         const priceInPESOS = convertToPESOS(product.cost);
         const itemSubtotal = priceInPESOS * product.quantity;
@@ -226,10 +226,10 @@ function displayCart() {
         cartContainer.innerHTML += productHTML;
     });
 
-    // Mostrar el subtotal general en COP
-    document.querySelector('.subtotal').innerText = `PESOS ${subtotal.toLocaleString()}`;
+    // Mostramos el subtotal general en PESOS
+    document.querySelector('.subtotal').innerText = `$ ${subtotal.toLocaleString()}`;
 
-    // Configurar los eventos de "Eliminar" nuevamente después de renderizar el carrito
+    // Configuramos los eventos "Eliminar" nuevamente después de renderizar el carrito
     document.querySelectorAll('.remove-btn').forEach(button => {
         button.addEventListener('click', removeItem);
     });

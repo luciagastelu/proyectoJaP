@@ -913,6 +913,7 @@ body.night-mode .btn {
 .night-mode .comentario {
   background-color: black;
   color: white;
+
 }
 
 /*ESTILOS PARA EL CARRITO*/
@@ -1055,4 +1056,5 @@ body.night-mode .btn {
   font-size: 1.2em; /* Ajusta el tamaño del texto del mensaje */
   margin-top: 10px; /* Espacio entre el título y el mensaje */
 }
+
 

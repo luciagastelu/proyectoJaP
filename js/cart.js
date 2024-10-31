@@ -227,7 +227,7 @@ function displayCart() {
     });
 
     // Mostramos el subtotal general en PESOS
-    document.querySelector('.subtotal').innerText = `$ ${subtotal.toLocaleString()}`;
+    document.querySelector('.total').innerText = `$ ${subtotal.toLocaleString()}`;
 
     // Configuramos los eventos "Eliminar" nuevamente después de renderizar el carrito
     document.querySelectorAll('.remove-btn').forEach(button => {

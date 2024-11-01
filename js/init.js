@@ -90,3 +90,39 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+// cart.js
+
+// Función para inicializar el carrito en localStorage si está vacío
+function initializeCart() {
+  if (!localStorage.getItem('cart')) {
+      localStorage.setItem('cart', JSON.stringify([]));
+      console.log("Carrito inicializado en localStorage.");
+  } else {
+      console.log("Carrito ya existente en localStorage:", JSON.parse(localStorage.getItem('cart')));
+  }
+}
+
+// Función para actualizar el contador de productos en el carrito
+function updateCartCount() {
+  initializeCart(); // Asegurarse de que el carrito esté inicializado
+  
+  // Obtener el carrito desde localStorage
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  console.log("Contenido actual del carrito:", cart);
+  
+  // Calcular la cantidad total de productos en el carrito
+  const cartCount = cart.reduce((total, product) => total + product.quantity, 0);
+  console.log("Cantidad total de productos en el carrito:", cartCount);
+  
+  // Seleccionar el elemento del contador y actualizar el texto
+  const cartCountElement = document.getElementById('cart-count');
+  if (cartCountElement) {
+      cartCountElement.innerText = cartCount;
+      console.log("Contador de carrito actualizado a:", cartCount);
+  } else {
+      console.log("Elemento #cart-count no encontrado en la página.");
+  }
+}
+
+// Llamar a updateCartCount al cargar cada página
+document.addEventListener('DOMContentLoaded', updateCartCount);

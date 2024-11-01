@@ -44,21 +44,24 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <!--Menú desplegable del usuario-->
-          <li class="nav-item">
-            <a class="nav-link" id="login-link" href="login.html">Iniciar Sesión</a>
-            <ul class="dropdown-menu" id="dropdown">
-              <li><a class="dropdown-item" href="my-profile.html"><i class="fa fa-user" aria-hidden="true"></i> Mi perfil</a></li>
-              <li><a class="dropdown-item" href="cart.html"><i class="fa-solid fa-cart-shopping"></i>Mi carrito</a></li>
-              <hr class="hr-dropdown">
-              <li><a class="dropdown-item" href="login.html"><i class="fa-solid fa-arrow-right-from-bracket"></i>Cerrar sesión</a></li>
-            </ul>
-          </li>
-
-        </ul>
-      </div>
+         <!--Menú desplegable del usuario-->
+         <li class="nav-item">
+          <a class="nav-link" id="login-link" href="login.html">Iniciar Sesión</a>
+          <ul class="dropdown-menu" id="dropdown">
+            <li><a class="dropdown-item" href="my-profile.html"><i class="fa fa-user" aria-hidden="true"></i> Mi perfil</a></li>
+            <a class="dropdown-item" href="cart.html">
+              <i class="fa-solid fa-cart-shopping"></i> Mi carrito
+              <span id="cart-count" class="badge bg-danger text-white">0</span> <!-- Contador de productos -->
+          </a>
+      </li>
+            <hr class="hr-dropdown">
+            <li><a class="dropdown-item" href="login.html"><i class="fa-solid fa-arrow-right-from-bracket"></i>Cerrar sesión</a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
   <main class="pb-5">
     <div class="text-center p-4">
       <h2>Categorías</h2>

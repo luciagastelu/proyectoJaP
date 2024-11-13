@@ -1058,3 +1058,12 @@ body.night-mode .btn {
 }
 
 
+/* Estilos cart.html */
+.form-label {
+  text-align: left;
+  display: block; /* Esto asegura que las etiquetas se mantengan alineadas a la izquierda */
+}
+ p {
+  text-align: left;
+  display: block; /* Esto asegura que las etiquetas se mantengan alineadas a la izquierda */
+ }

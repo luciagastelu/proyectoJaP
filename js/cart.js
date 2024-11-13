@@ -234,3 +234,89 @@ function displayCart() {
         button.addEventListener('click', removeItem);
     });
 }
+
+//Botón siguiete que valida campos de dirección completos
+function validateDireccion() {
+    // Obtener los valores de los campos de dirección
+    const departamento = document.getElementById("departamento").value;
+    const localidad = document.getElementById("localidad").value;
+    const calle = document.getElementById("calle").value;
+    const numero = document.getElementById("numero").value;
+    const esquina = document.getElementById("esquina").value;
+  
+    // Comprobar si todos los campos están completos
+    if (departamento && localidad && calle && numero && esquina) {
+      return true;  // Todos los campos están completos
+    } else {
+      alert("Por favor complete todos los campos obligatorios.");
+      return false;  // Hay campos vacíos
+    }
+  }
+  document.getElementById("nextButton").addEventListener("click", function () {
+    // Validar la dirección
+    if (validateDireccion()) {
+      // Si es válido, cambiar a la pestaña de "Costos"
+      const costosTab = new bootstrap.Tab(document.getElementById('costos-tab'));
+      costosTab.show();  // Cambiar a la pestaña "Costos"
+    }
+  });
+
+//Validaciones al hacer click en finalizar compra
+  function validateFinalizarCompra() {
+    // Validar forma de envío seleccionada
+    const tipoEnvio = document.getElementById("tipoEnvio").value;
+    if (!tipoEnvio) {
+      alert("Por favor, complete todos los datos obligatorios.");
+      return false;
+    }
+  
+    // Validar forma de pago seleccionada
+    const formaDePago = document.getElementById("formaDePago").value;
+    if (!formaDePago) {
+      alert("Por favor, complete todos los datos obligatorios.");
+      return false;
+    }
+  
+    return true; // Si pasa todas las validaciones, permite continuar
+  }
+
+  document.querySelector(".purchase-btn").addEventListener("click", function(event) {
+    // Prevenir la acción predeterminada del botón (si se desea evitar un submit inmediato)
+    event.preventDefault();
+  
+    // Validar los campos
+    if (validateFinalizarCompra()) {
+      // Si la validación es exitosa, proceder con la compra o el siguiente paso
+      alert("Felicidades! Sólo resta esperar que llegue tú compra.");
+     
+    }
+  });
+
+  // Desactivar la pestaña Costos
+  document.getElementById('costos-tab').addEventListener('click', function(event) {
+    event.preventDefault(); // Evitar el cambio de pestaña si no ha pasado por la validación
+  });
+
+  // Activar la pestaña Costos al hacer clic en el botón "Siguiente"
+  document.getElementById('nextButton').addEventListener('click', function() {
+    // Validación de los campos de la dirección
+    const departamento = document.getElementById('departamento').value;
+    const localidad = document.getElementById('localidad').value;
+    const calle = document.getElementById('calle').value;
+    const numero = document.getElementById('numero').value;
+    const esquina = document.getElementById('esquina').value;
+
+    if (departamento && localidad && calle && numero && esquina) {
+      // Si todos los campos están completos, permitir cambiar a la pestaña "Costos"
+      const costosTab = document.getElementById('costos-tab');
+      costosTab.classList.remove('disabled');
+      costosTab.removeAttribute('disabled');
+      
+      // Cambiar a la pestaña "Costos"
+      const costosTabElement = new bootstrap.Tab(costosTab);
+      costosTabElement.show();
+    } else {
+      alert('Por favor, complete todos los campos obligatorios.');
+    }
+  });
+

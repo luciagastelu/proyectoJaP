@@ -320,3 +320,51 @@ function validateDireccion() {
     }
   });
 
+// Función para actualizar los costos en la pestaña "Costos"
+function updateCosts() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let subtotal = 0;
+
+    // Calcular el subtotal sumando el costo de todos los productos en el carrito
+    cart.forEach(product => {
+        const itemSubtotal = product.cost * product.quantity;
+        subtotal += itemSubtotal;
+    });
+
+    // Mostrar el subtotal en la sección de costos
+    document.getElementById('subtotal').innerText = `USD ${subtotal.toFixed(2)}`;
+
+    // Obtener el tipo de envío seleccionado y calcular el costo de envío
+    const tipoEnvio = document.getElementById('tipoEnvio').value;
+    let shippingCost = 0;
+
+    if (tipoEnvio === 'premium') {
+        shippingCost = subtotal * 0.15;
+    } else if (tipoEnvio === 'express') {
+        shippingCost = subtotal * 0.07;
+    } else if (tipoEnvio === 'standard') {
+        shippingCost = subtotal * 0.05;
+    }
+
+    // Mostrar el costo de envío
+    document.getElementById('shippingCost').innerText = `USD ${shippingCost.toFixed(2)}`;
+
+    // Calcular el total
+    const totalCost = subtotal + shippingCost;
+
+    // Mostrar el total
+    document.getElementById('totalCost').innerText = `USD ${totalCost.toFixed(2)}`;
+}
+
+// Actualizar los costos cada vez que se cambia el tipo de envío
+document.getElementById('tipoEnvio').addEventListener('change', updateCosts);
+
+// Actualizar los costos cuando el carrito se carga o se modifica
+document.addEventListener('DOMContentLoaded', updateCosts);
+document.getElementById('cart-container').addEventListener('change', function(event) {
+    if (event.target && event.target.matches('.quantity-input')) {
+        updateCosts();
+    }
+});
+
+

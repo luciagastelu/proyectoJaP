@@ -320,6 +320,8 @@ function validateDireccion() {
     }
   });
 
+  //Falta cambiar de dolares a pesos
+
 // Función para actualizar los costos en la pestaña "Costos"
 function updateCosts() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];

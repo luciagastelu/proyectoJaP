@@ -40,60 +40,58 @@ function displayItems(items) {
     });
     }
     //cARRITO
-    function displayCart() {
-        const cartContainer = document.getElementById('cart-container');
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        let subtotal = 0;
-    
-        // Si el carrito está vacío, mostrar un mensaje
-        if (cart.length === 0) {
-            cartContainer.innerHTML = `
-                <div class="alert alert-info text-center empty-cart">
-                    <h4 class="alert-heading">Tu carrito está vacío</h4>
-                    <p>¡Añade productos para comenzar a comprar!</p>
-                </div>
-            `;
-            //ocultar la sección del subtotal y botón de compra
-        document.querySelector('.cart-total').style.display = 'none'; // Oculta el subtotal y botón de compra
-            return;
-            return;
-        }
-    
-        // Limpiar contenido del contenedor
-        cartContainer.innerHTML = '';
-    
-        // Mostrar cada producto en el carrito
-        cart.forEach((product, index) => {
-            const itemSubtotal = product.cost * product.quantity;
-            subtotal += itemSubtotal;
-    
-            const productHTML = `
-                <div class="cart-item">
-        <img src="${product.image}" alt="${product.name}" class="product-image" />
-        
-        <div class="product-info">
-            <h5 class="product-name">${product.name}</h5>
-            <div class="product-quantity">
-                <label>Cantidad:
-                    <input type="number" value="${product.quantity}" min="1" data-product-id="${product.id}" class="quantity-input" style="width: 50px;" color="gray" />
-                </label>
+   // Actualizar el carrito para mostrar precios en UYU
+function displayCart() {
+    const cartContainer = document.getElementById('cart-container');
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let subtotal = 0;
+
+    // Si el carrito está vacío, mostrar un mensaje
+    if (cart.length === 0) {
+        cartContainer.innerHTML = `
+            <div class="alert alert-info text-center empty-cart">
+                <h4 class="alert-heading">Tu carrito está vacío</h4>
+                <p>¡Añade productos para comenzar a comprar!</p>
             </div>
-        </div>
+        `;
+        document.querySelector('.cart-total').style.display = 'none';
+        return;
+    }
 
-        <div class="product-price-info">
-            <p class="product-price">${product.currency} ${product.cost}</p>
-            <p class="product-subtotal">Subtotal: ${product.currency} ${itemSubtotal}</p>
-            <span class="remove-btn" data-index="${index}">Eliminar</span>
-        </div>
-    </div>
-            `;
-            cartContainer.innerHTML += productHTML;
-        });
-    
-        // Mostrar el subtotal general
-    document.querySelector('.subtotal').innerText = `USD ${subtotal}`;
+    // Limpiar contenido del contenedor
+    cartContainer.innerHTML = '';
 
-    // Configurar los eventos de "Eliminar" nuevamente después de renderizar el carrito
+    // Mostrar cada producto en el carrito
+    cart.forEach((product, index) => {
+        const priceInPESOS = convertToPESOS(product.cost);  // Convertir a pesos
+        const itemSubtotal = priceInPESOS * product.quantity;
+        subtotal += itemSubtotal;
+
+        const productHTML = `
+            <div class="cart-item">
+                <img src="${product.image}" alt="${product.name}" class="product-image" />
+                <div class="product-info">
+                    <h5 class="product-name">${product.name}</h5>
+                    <div class="product-quantity">
+                        <label>Cantidad:
+                            <input type="number" value="${product.quantity}" min="1" data-product-id="${product.id}" class="quantity-input" style="width: 50px;" color="gray" />
+                        </label>
+                    </div>
+                </div>
+                <div class="product-price-info">
+                    <p class="product-price">$ ${priceInPESOS.toLocaleString()}</p>
+                    <p class="product-subtotal">Subtotal: $ ${itemSubtotal.toLocaleString()}</p>
+                    <span class="remove-btn" data-index="${index}">Eliminar</span>
+                </div>
+            </div>
+        `;
+        cartContainer.innerHTML += productHTML;
+    });
+
+    // Mostrar el subtotal general en PESOS
+    document.querySelector('.total').innerText = `$ ${subtotal.toLocaleString()}`;
+
+    // Configurar los eventos "Eliminar" nuevamente después de renderizar el carrito
     document.querySelectorAll('.remove-btn').forEach(button => {
         button.addEventListener('click', removeItem);
     });
@@ -130,11 +128,12 @@ function removeItem(event) {
 document.addEventListener('DOMContentLoaded', displayCart);
 
 //Agregar para que cambie de USD a $
-// Función para convertir de USD a $
+// Función para convertir de USD a UYU
 function convertToPESOS(usdAmount) {
-    const exchangeRate = 40; // Tipo de cambio de USD a $
+    const exchangeRate = 40; // Tipo de cambio de USD a UYU
     return usdAmount * exchangeRate;
 }
+
 
 function displayItems(items) {
     container.innerHTML = '';
@@ -340,4 +339,55 @@ function validateDireccion() {
       alert('Por favor, complete todos los campos obligatorios.');
     }
   });
+
+  //Falta cambiar de dolares a pesos
+
+// Función para actualizar los costos en la pestaña "Costos"
+function updateCosts() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let subtotal = 0;
+
+    // Calcular el subtotal sumando el costo de todos los productos en el carrito
+    cart.forEach(product => {
+        const itemSubtotal = convertToPESOS(product.cost) * product.quantity;  // Convertir a pesos
+        subtotal += itemSubtotal;
+    });
+
+    // Mostrar el subtotal en la sección de costos
+    document.getElementById('subtotal').innerText = `$ ${subtotal.toLocaleString()}`;
+
+    // Obtener el tipo de envío seleccionado y calcular el costo de envío
+    const tipoEnvio = document.getElementById('tipoEnvio').value;
+    let shippingCost = 0;
+
+    if (tipoEnvio === 'premium') {
+        shippingCost = subtotal * 0.15;
+    } else if (tipoEnvio === 'express') {
+        shippingCost = subtotal * 0.07;
+    } else if (tipoEnvio === 'standard') {
+        shippingCost = subtotal * 0.05;
+    }
+
+    // Mostrar el costo de envío
+    document.getElementById('shippingCost').innerText = `$ ${shippingCost.toLocaleString()}`;
+
+    // Calcular el total
+    const totalCost = subtotal + shippingCost;
+
+    // Mostrar el total
+    document.getElementById('totalCost').innerText = `$ ${totalCost.toLocaleString()}`;
+}
+
+
+// Actualizar los costos cada vez que se cambia el tipo de envío
+document.getElementById('tipoEnvio').addEventListener('change', updateCosts);
+
+// Actualizar los costos cuando el carrito se carga o se modifica
+document.addEventListener('DOMContentLoaded', updateCosts);
+document.getElementById('cart-container').addEventListener('change', function(event) {
+    if (event.target && event.target.matches('.quantity-input')) {
+        updateCosts();
+    }
+});
+
 

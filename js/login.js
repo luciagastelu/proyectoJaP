@@ -1,7 +1,8 @@
+//Muestra un mensaje de error alguno de los campos esta vacío
 function showAlertError(){
     alert("Por favor, completa todos los campos antes de enviar el formulario.");
 }
-
+//Muestra un mensaje cuando se inicia sesión correctamente
 function showAlertSuccess(){
     alert("¡Inicio de sesión exitoso!");
 }
@@ -12,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function validarForm(event){
-    // Prevenir el comportamiento por defecto del formulario
+    // Previene el comportamiento por defecto del formulario
     event.preventDefault();
     
     const username = document.getElementById("usuario").value;
@@ -20,13 +21,13 @@ function validarForm(event){
 
     // Revisa que los campos no estan vacios
     if (username === "" || password === "") {
-        // Mostrar el error
+        // Muestra el error
         showAlertError();
     } else { 
-        // Mostrar alerta de éxito
+        // Muestra alerta de éxito
         showAlertSuccess();
 
-        // Guardar la sesión        
+        // Guarda la sesión        
          localStorage.setItem('userEmail', username); 
         // Redirige al inicio
         window.location.href = "index.html"; 

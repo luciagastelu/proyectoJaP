@@ -1,4 +1,5 @@
-function displayItems(items) {
+// Genera y muestra una lista de productos en un contenedor
+/*function displayItems(items) {
     container.innerHTML = '';
     items.forEach(product => {
         const productHTML = `
@@ -38,16 +39,16 @@ function displayItems(items) {
         `;
         container.innerHTML += productHTML;
     });
-    }
-    //cARRITO
-   // Actualizar el carrito para mostrar precios en UYU
-function displayCart() {
+    }*/
+    //CARRITO
+   // Muestra los elementos del carrito de compras y el subtotal
+/*function displayCart() {
     const cartContainer = document.getElementById('cart-container');
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    let subtotal = 0;
+    let subtotal = 0; //Declara una variable subtotal e inicializa su valor en 0
 
-    // Si el carrito está vacío, mostrar un mensaje
-    if (cart.length === 0) {
+    // Si el carrito está vacío, muestra un mensaje
+    /*if (cart.length === 0) {
         cartContainer.innerHTML = `
             <div class="alert alert-info text-center empty-cart">
                 <h4 class="alert-heading">Tu carrito está vacío</h4>
@@ -56,15 +57,15 @@ function displayCart() {
         `;
         document.querySelector('.cart-total').style.display = 'none';
         return;
-    }
+    }*/
 
-    // Limpiar contenido del contenedor
-    cartContainer.innerHTML = '';
+    // Limpia contenido del contenedor para que se le pueda agregar información nueva
+    /*cartContainer.innerHTML = '';
 
-    // Mostrar cada producto en el carrito
-    cart.forEach((product, index) => {
-        const priceInPESOS = convertToPESOS(product.cost);  // Convertir a pesos
-        const itemSubtotal = priceInPESOS * product.quantity;
+    // Recorre el carrito
+    /*cart.forEach((product, index) => {
+        const priceInPESOS = convertToPESOS(product.cost);  // Converte el precio del producto a pesos
+        const itemSubtotal = priceInPESOS * product.quantity; //Calcula el subtotal para el producto, multiplicando el precio convertido por la cantidad 
         subtotal += itemSubtotal;
 
         const productHTML = `
@@ -86,18 +87,19 @@ function displayCart() {
             </div>
         `;
         cartContainer.innerHTML += productHTML;
-    });
+    });*/
 
-    // Mostrar el subtotal general en PESOS
-    document.querySelector('.total').innerText = `$ ${subtotal.toLocaleString()}`;
+    // Muestra el total en PESOS
+    /*document.querySelector('.total').innerText = `$ ${subtotal.toLocaleString()}`;
 
-    // Configurar los eventos "Eliminar" nuevamente después de renderizar el carrito
-    document.querySelectorAll('.remove-btn').forEach(button => {
+    // Configura los eventos "Eliminar" para los productos del carrito 
+    /*document.querySelectorAll('.remove-btn').forEach(button => {
         button.addEventListener('click', removeItem);
-    });
-}
+    });*/
+//}
 
-// Actualizar la cantidad del producto y recalcular el subtotal
+// Actualizar la cantidad de un producto en el carrito de compras cuando el usuario 
+//cambia el valor del campo de entrada de cantidad
 document.getElementById('cart-container').addEventListener('change', function(event) {
     if (event.target && event.target.matches('.quantity-input')) {
         const productId = event.target.getAttribute('data-product-id');
@@ -113,7 +115,7 @@ document.getElementById('cart-container').addEventListener('change', function(ev
     }
 });
 
-// Función para eliminar producto
+// Función para eliminar producto del carrito
 function removeItem(event) {
     const index = event.target.dataset.index;
 
@@ -127,14 +129,14 @@ function removeItem(event) {
 // Llamar a displayCart al cargar la página
 document.addEventListener('DOMContentLoaded', displayCart);
 
-//Agregar para que cambie de USD a $
+
 // Función para convertir de USD a UYU
 function convertToPESOS(usdAmount) {
     const exchangeRate = 40; // Tipo de cambio de USD a UYU
     return usdAmount * exchangeRate;
 }
 
-
+// Genera y muestra una lista de productos en un contenedor
 function displayItems(items) {
     container.innerHTML = '';
     items.forEach(product => {
@@ -177,13 +179,13 @@ function displayItems(items) {
         container.innerHTML += productHTML;
     });
 }
-
+// Muestra los elementos del carrito de compras y el subtotal
 function displayCart() {
     const cartContainer = document.getElementById('cart-container');
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    let subtotal = 0;
+    let subtotal = 0;//Declara una variable subtotal e inicializa su valor en 0
 
-    // Si el carrito está vacío, mostramos un mensaje
+    // Muestra un mensaje si el carrito esta vacío
     if (cart.length === 0) {
         cartContainer.innerHTML = `
             <div class="alert alert-info text-center empty-cart">
@@ -197,13 +199,15 @@ function displayCart() {
         return;
     }
 
-    // Limpiamos el contenido del contenedor
+    // Limpia contenido del contenedor para que se le pueda agregar información 
+    //nueva
     cartContainer.innerHTML = '';
 
-    // Mostramos cada producto en el carrito
+    // Recorre el carrito
     cart.forEach((product, index) => {
         const priceInPESOS = convertToPESOS(product.cost);
-        const itemSubtotal = priceInPESOS * product.quantity;
+        const itemSubtotal = priceInPESOS * product.quantity;//Calcula el subtotal 
+        //para el producto, multiplicando el precio convertido por la cantidad 
         subtotal += itemSubtotal;
 
         const productHTML = `
@@ -227,15 +231,16 @@ function displayCart() {
         cartContainer.innerHTML += productHTML;
     });
 
-    // Mostramos el subtotal general en PESOS
+    // Muestra el total en pesos
     document.querySelector('.total').innerText = `$ ${subtotal.toLocaleString()}`;
 
-    // Configuramos los eventos "Eliminar" nuevamente después de renderizar el carrito
+    // Configura los eventos "Eliminar" para los productos del carrito 
     document.querySelectorAll('.remove-btn').forEach(button => {
         button.addEventListener('click', removeItem);
     });
 }
 
+//Muestra pestañas en función del carrito
 function toggleTabs(cart) {
     const costosTab = document.getElementById('costos-tab');
     const direccionTab = document.getElementById('direccion-tab');
@@ -256,15 +261,15 @@ function toggleTabs(cart) {
 }
 
 //Botón siguiete que valida campos de dirección completos
-function validateDireccion() {
-    // Obtener los valores de los campos de dirección
-    const departamento = document.getElementById("departamento").value;
+/*function validateDireccion() {
+    // Obtiene los valores de los campos de dirección
+    /*const departamento = document.getElementById("departamento").value;
     const localidad = document.getElementById("localidad").value;
     const calle = document.getElementById("calle").value;
     const numero = document.getElementById("numero").value;
-    const esquina = document.getElementById("esquina").value;
+    const esquina = document.getElementById("esquina").value;/*
   
-    // Comprobar si todos los campos están completos
+    // Comprueba si todos los campos están completos
     if (departamento && localidad && calle && numero && esquina) {
       return true;  // Todos los campos están completos
     } else {
@@ -273,24 +278,102 @@ function validateDireccion() {
     }
   }
   document.getElementById("nextButton").addEventListener("click", function () {
-    // Validar la dirección
-    if (validateDireccion()) {
-      // Si es válido, cambiar a la pestaña de "Costos"
+    // Valida la dirección
+   /* if (validateDireccion()) {
+      // Si es válido, cambia a la pestaña de "Costos"
       const costosTab = new bootstrap.Tab(document.getElementById('costos-tab'));
-      costosTab.show();  // Cambiar a la pestaña "Costos"
+      costosTab.show();  // Cambia a la pestaña "Costos"
+    }
+  });*/
+  
+// Desactiva la pestaña Costos si no se completo antes la pestaña "Dirección 
+  //de envío"
+  document.getElementById('costos-tab').addEventListener('click', function(event) {
+    event.preventDefault(); // Evitar el cambio de pestaña si no ha pasado por la validación
+  });
+
+  // Activa la pestaña Costos al hacer clic en el botón "Siguiente"
+  document.getElementById('nextButton').addEventListener('click', function() {
+    // Validación de los campos de la dirección
+    const departamento = document.getElementById('departamento').value;
+    const localidad = document.getElementById('localidad').value;
+    const calle = document.getElementById('calle').value;
+    const numero = document.getElementById('numero').value;
+    const esquina = document.getElementById('esquina').value;
+
+    if (departamento && localidad && calle && numero && esquina) {
+      // Si todos los campos están completos, permite cambiar a la pestaña "Costos"
+      const costosTab = document.getElementById('costos-tab');
+      costosTab.classList.remove('disabled');
+      costosTab.removeAttribute('disabled');
+      
+      // Cambia a la pestaña "Costos"
+      const costosTabElement = new bootstrap.Tab(costosTab);
+      costosTabElement.show();
+    } else {
+      alert('Por favor, complete todos los campos obligatorios.');
     }
   });
 
+  
+// Función para actualizar los costos en la pestaña "Costos"
+function updateCosts() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let subtotal = 0;
+
+    // Calcula el subtotal sumando el costo de todos los productos en el carrito
+    cart.forEach(product => {
+        const itemSubtotal = convertToPESOS(product.cost) * product.quantity;  // Convertir a pesos
+        subtotal += itemSubtotal;
+    });
+
+    // Muestra el subtotal en la sección de costos
+    document.getElementById('subtotal').innerText = `$ ${subtotal.toLocaleString()}`;
+
+    // Obtiene el tipo de envío seleccionado y calcula el costo de envío
+    const tipoEnvio = document.getElementById('tipoEnvio').value;
+    let shippingCost = 0;
+
+    if (tipoEnvio === 'premium') {
+        shippingCost = subtotal * 0.15;
+    } else if (tipoEnvio === 'express') {
+        shippingCost = subtotal * 0.07;
+    } else if (tipoEnvio === 'standard') {
+        shippingCost = subtotal * 0.05;
+    }
+
+    // Muestra el costo de envío
+    document.getElementById('shippingCost').innerText = `$ ${shippingCost.toLocaleString()}`;
+
+    // Calcula el total
+    const totalCost = subtotal + shippingCost;
+
+    // Mostra el total
+    document.getElementById('totalCost').innerText = `$ ${totalCost.toLocaleString()}`;
+}
+
+
+// Actualiza los costos cada vez que se cambia el tipo de envío
+document.getElementById('tipoEnvio').addEventListener('change', updateCosts);
+
+// Actualiza los costos cuando el carrito se carga o se modifica
+document.addEventListener('DOMContentLoaded', updateCosts);
+document.getElementById('cart-container').addEventListener('change', function(event) {
+    if (event.target && event.target.matches('.quantity-input')) {
+        updateCosts();
+    }
+});
+
 //Validaciones al hacer click en finalizar compra
   function validateFinalizarCompra() {
-    // Validar forma de envío seleccionada
+    // Valida forma de envío seleccionada
     const tipoEnvio = document.getElementById("tipoEnvio").value;
     if (!tipoEnvio) {
       alert("Por favor, complete todos los datos obligatorios.");
       return false;
     }
   
-    // Validar forma de pago seleccionada
+    // Valida forma de pago seleccionada
     const formaDePago = document.getElementById("formaDePago").value;
     if (!formaDePago) {
       alert("Por favor, complete todos los datos obligatorios.");
@@ -304,7 +387,7 @@ function validateDireccion() {
     // Prevenir la acción predeterminada del botón (si se desea evitar un submit inmediato)
     event.preventDefault();
   
-    // Validar los campos
+    // Valida los campos
     if (validateFinalizarCompra()) {
       // Si la validación es exitosa, proceder con la compra o el siguiente paso
       alert("Felicidades! Sólo resta esperar que llegue tú compra.");
@@ -312,82 +395,4 @@ function validateDireccion() {
     }
   });
 
-  // Desactivar la pestaña Costos
-  document.getElementById('costos-tab').addEventListener('click', function(event) {
-    event.preventDefault(); // Evitar el cambio de pestaña si no ha pasado por la validación
-  });
-
-  // Activar la pestaña Costos al hacer clic en el botón "Siguiente"
-  document.getElementById('nextButton').addEventListener('click', function() {
-    // Validación de los campos de la dirección
-    const departamento = document.getElementById('departamento').value;
-    const localidad = document.getElementById('localidad').value;
-    const calle = document.getElementById('calle').value;
-    const numero = document.getElementById('numero').value;
-    const esquina = document.getElementById('esquina').value;
-
-    if (departamento && localidad && calle && numero && esquina) {
-      // Si todos los campos están completos, permitir cambiar a la pestaña "Costos"
-      const costosTab = document.getElementById('costos-tab');
-      costosTab.classList.remove('disabled');
-      costosTab.removeAttribute('disabled');
-      
-      // Cambiar a la pestaña "Costos"
-      const costosTabElement = new bootstrap.Tab(costosTab);
-      costosTabElement.show();
-    } else {
-      alert('Por favor, complete todos los campos obligatorios.');
-    }
-  });
-
-  //Falta cambiar de dolares a pesos
-
-// Función para actualizar los costos en la pestaña "Costos"
-function updateCosts() {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    let subtotal = 0;
-
-    // Calcular el subtotal sumando el costo de todos los productos en el carrito
-    cart.forEach(product => {
-        const itemSubtotal = convertToPESOS(product.cost) * product.quantity;  // Convertir a pesos
-        subtotal += itemSubtotal;
-    });
-
-    // Mostrar el subtotal en la sección de costos
-    document.getElementById('subtotal').innerText = `$ ${subtotal.toLocaleString()}`;
-
-    // Obtener el tipo de envío seleccionado y calcular el costo de envío
-    const tipoEnvio = document.getElementById('tipoEnvio').value;
-    let shippingCost = 0;
-
-    if (tipoEnvio === 'premium') {
-        shippingCost = subtotal * 0.15;
-    } else if (tipoEnvio === 'express') {
-        shippingCost = subtotal * 0.07;
-    } else if (tipoEnvio === 'standard') {
-        shippingCost = subtotal * 0.05;
-    }
-
-    // Mostrar el costo de envío
-    document.getElementById('shippingCost').innerText = `$ ${shippingCost.toLocaleString()}`;
-
-    // Calcular el total
-    const totalCost = subtotal + shippingCost;
-
-    // Mostrar el total
-    document.getElementById('totalCost').innerText = `$ ${totalCost.toLocaleString()}`;
-}
-
-
-// Actualizar los costos cada vez que se cambia el tipo de envío
-document.getElementById('tipoEnvio').addEventListener('change', updateCosts);
-
-// Actualizar los costos cuando el carrito se carga o se modifica
-document.addEventListener('DOMContentLoaded', updateCosts);
-document.getElementById('cart-container').addEventListener('change', function(event) {
-    if (event.target && event.target.matches('.quantity-input')) {
-        updateCosts();
-    }
-});
-
-
+  

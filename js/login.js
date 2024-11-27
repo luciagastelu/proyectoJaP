@@ -1,3 +1,4 @@
+
 //Muestra un mensaje de error alguno de los campos esta vacío
 function showAlertError(){
     alert("Por favor, completa todos los campos antes de enviar el formulario.");
@@ -33,3 +34,5 @@ function validarForm(event){
         window.location.href = "index.html"; 
     }    
 }
+
+
